@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="finControl - dashboard de finanças pessoais com resumo de receitas, despesas e saldo.">
+    <title>finControl · Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="cabecalho">
+        <div class="container cabecalho-inner">
+            <a class="logo" href="index.html" aria-label="finControl - página inicial">
+                <img src="assets/icons/wallet.svg" alt="">
+                <span>fin<strong>Control</strong></span>
+            </a>
+            <nav class="nav" aria-label="Navegação principal">
+                <a href="index.html" class="nav-link ativo" aria-current="page">Dashboard</a>
+                <a href="cadastro.html" class="nav-link">Novo Lançamento</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="conteudo">
+        <section class="hero">
+            <h1>Dashboard</h1>
+            <p>Resumo das suas finanças em um só lugar.</p>
+        </section>
+
+        <section class="resumo" aria-label="Resumo financeiro">
+            <article class="cartao resumo-item">
+                <span class="resumo-icone resumo-icone-receita" aria-hidden="true">
+                    <img src="assets/icons/trend-up.svg" alt="">
+                </span>
+                <div class="resumo-texto">
+                    <p class="resumo-rotulo">Receitas</p>
+                    <p class="resumo-valor resumo-valor-receita" id="total-receitas">R$ 0,00</p>
+                </div>
+            </article>
+
+            <article class="cartao resumo-item">
+                <span class="resumo-icone resumo-icone-despesa" aria-hidden="true">
+                    <img src="assets/icons/trend-down.svg" alt="">
+                </span>
+                <div class="resumo-texto">
+                    <p class="resumo-rotulo">Despesas</p>
+                    <p class="resumo-valor resumo-valor-despesa" id="total-despesas">R$ 0,00</p>
+                </div>
+            </article>
+
+            <article class="cartao resumo-item">
+                <span class="resumo-icone resumo-icone-saldo" aria-hidden="true">
+                    <img src="assets/icons/balance.svg" alt="">
+                </span>
+                <div class="resumo-texto">
+                    <p class="resumo-rotulo">Saldo Atual</p>
+                    <p class="resumo-valor resumo-valor-saldo" id="saldo-atual">R$ 0,00</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="cartao lista-section" aria-labelledby="titulo-lista">
+            <div class="lista-cabecalho">
+                <h2 id="titulo-lista">Lançamentos</h2>
+                <a class="botao botao-primario" href="cadastro.html">
+                    <img src="assets/icons/plus.svg" alt="">
+                    Novo Lançamento
+                </a>
+            </div>
+
+            <div id="lista-lancamentos" class="lista" role="list"></div>
+
+            <div id="lista-vazia" class="estado-vazio" hidden>
+                <img src="assets/icons/inbox.svg" alt="">
+                <p>Nenhum lançamento cadastrado.</p>
+                <p class="estado-vazio-sub">Clique em "Novo Lançamento" para começar a controlar suas finanças.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <p>finControl — suas finanças em ordem.</p>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
