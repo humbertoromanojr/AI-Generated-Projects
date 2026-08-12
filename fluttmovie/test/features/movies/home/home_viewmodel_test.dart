@@ -75,4 +75,56 @@ void main() {
     expect(await vm.toggleFavorite(buildMovie(1)), isTrue);
     expect(favorites.favorites, isNot(contains(1)));
   });
+
+  test('loadMorePopular busca a próxima página com a mesma quantidade',
+      () async {
+    repository.popularByPage = {
+      1: List.generate(20, (i) => buildMovie(i)),
+      2: List.generate(20, (i) => buildMovie(20 + i)),
+      3: List.generate(5, (i) => buildMovie(40 + i)),
+    };
+
+    final vm = buildViewModel();
+    await vm.load();
+    expect(vm.popular, hasLength(20));
+    expect(vm.hasMorePopular, isTrue);
+
+    await vm.loadMorePopular();
+    expect(vm.popular, hasLength(40));
+    expect(vm.hasMorePopular, isTrue);
+
+    await vm.loadMorePopular();
+    expect(vm.popular, hasLength(45));
+    expect(vm.hasMorePopular, isFalse);
+  });
+
+  test('loadMorePopular não busca quando não há mais páginas', () async {
+    repository.popularByPage = {
+      1: [buildMovie(1)],
+    };
+
+    final vm = buildViewModel();
+    await vm.load();
+    expect(vm.hasMorePopular, isFalse);
+
+    await vm.loadMorePopular();
+    expect(vm.popular, hasLength(1));
+  });
+
+  test('isLoadingMorePopular indica o carregamento em andamento', () async {
+    repository.popularByPage = {
+      1: List.generate(20, (i) => buildMovie(i)),
+      2: [buildMovie(20)],
+    };
+
+    final vm = buildViewModel();
+    await vm.load();
+    expect(vm.isLoadingMorePopular, isFalse);
+
+    final future = vm.loadMorePopular();
+    expect(vm.isLoadingMorePopular, isTrue);
+    await future;
+    expect(vm.isLoadingMorePopular, isFalse);
+    expect(vm.popular, hasLength(21));
+  });
 }

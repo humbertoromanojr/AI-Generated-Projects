@@ -18,12 +18,17 @@ class HomeViewModel extends ChangeNotifier {
   List<Movie> _popular = [];
   List<Genre> _genres = [];
   bool _isLoading = false;
+  bool _isLoadingMorePopular = false;
+  bool _hasMorePopular = true;
+  int _popularPage = 1;
   Failure? _error;
 
   List<Movie> get nowPlaying => _nowPlaying;
   List<Movie> get popular => _popular;
   List<Genre> get genres => _genres;
   bool get isLoading => _isLoading;
+  bool get isLoadingMorePopular => _isLoadingMorePopular;
+  bool get hasMorePopular => _hasMorePopular;
   Failure? get error => _error;
 
   HomeViewModel(
@@ -36,6 +41,9 @@ class HomeViewModel extends ChangeNotifier {
   Future<void> load() async {
     _isLoading = true;
     _error = null;
+    _popularPage = 1;
+    _hasMorePopular = true;
+    _isLoadingMorePopular = false;
     notifyListeners();
 
     final nowPlaying = await _getNowPlaying();
@@ -48,7 +56,10 @@ class HomeViewModel extends ChangeNotifier {
     );
     popular.fold(
       (f) => _error ??= f,
-      (movies) => _popular = movies,
+      (movies) {
+        _popular = movies;
+        _hasMorePopular = movies.length >= 20;
+      },
     );
     genres.fold(
       (_) {},
@@ -56,6 +67,24 @@ class HomeViewModel extends ChangeNotifier {
     );
 
     _isLoading = false;
+    notifyListeners();
+  }
+
+  Future<void> loadMorePopular() async {
+    if (_isLoading || _isLoadingMorePopular || !_hasMorePopular) return;
+    _isLoadingMorePopular = true;
+    notifyListeners();
+
+    final result = await _getPopular(page: _popularPage + 1);
+    result.fold(
+      (_) {},
+      (movies) {
+        _popular = [..._popular, ...movies];
+        _popularPage += 1;
+        _hasMorePopular = movies.length >= 20;
+      },
+    );
+    _isLoadingMorePopular = false;
     notifyListeners();
   }
 

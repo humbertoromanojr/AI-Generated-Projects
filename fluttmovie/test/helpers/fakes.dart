@@ -44,6 +44,7 @@ MovieDetails buildDetails(int id, {String title = 'Filme'}) {
 class FakeMovieRepository implements MovieRepository {
   List<Movie> nowPlaying = [];
   List<Movie> popular = [];
+  Map<int, List<Movie>> popularByPage = {};
   List<Movie> trending = [];
   List<Genre> genres = const [];
   MovieDetails? details;
@@ -59,6 +60,7 @@ class FakeMovieRepository implements MovieRepository {
   @override
   Future<Either<Failure, List<Movie>>> getPopular({int page = 1}) async {
     if (failure != null) return Left(failure!);
+    if (popularByPage.isNotEmpty) return Right(popularByPage[page] ?? const []);
     return Right(popular);
   }
 

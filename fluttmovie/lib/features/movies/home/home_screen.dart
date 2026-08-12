@@ -148,59 +148,84 @@ class _HomeBody extends StatelessWidget {
             onRefresh: vm.load,
             color: AppColors.primary,
             backgroundColor: AppColors.surface,
-            child: CustomScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              slivers: [
-                SliverPadding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.marginMain,
-                    AppSpacing.stackMd,
-                    AppSpacing.marginMain,
-                    0,
-                  ),
-                  sliver: SliverToBoxAdapter(
-                    child: Row(
-                      children: [
-                        Text(
-                          'Em Alta',
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        const SizedBox(width: 6),
-                        const Icon(
-                          Icons.local_fire_department_outlined,
-                          size: 20,
-                          color: AppColors.primary,
-                        ),
-                      ],
+            child: NotificationListener<ScrollNotification>(
+              onNotification: (notification) {
+                if (notification.metrics.pixels >=
+                    notification.metrics.maxScrollExtent - 300) {
+                  vm.loadMorePopular();
+                }
+                return false;
+              },
+              child: CustomScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                slivers: [
+                  SliverPadding(
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.marginMain,
+                      AppSpacing.stackMd,
+                      AppSpacing.marginMain,
+                      0,
                     ),
-                  ),
-                ),
-                SliverPadding(
-                  padding: const EdgeInsets.all(AppSpacing.marginMain),
-                  sliver: SliverGrid(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: AppSpacing.stackMd,
-                      crossAxisSpacing: AppSpacing.gutter,
-                      childAspectRatio: 0.56,
-                    ),
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) => MovieCard(
-                        movie: vm.popular[index],
-                        genreName: vm.popular[index].genreIds.isNotEmpty
-                            ? vm.genreName(vm.popular[index].genreIds.first)
-                            : null,
-                        onTap: () => _openMovie(context, vm.popular[index]),
+                    sliver: SliverToBoxAdapter(
+                      child: Row(
+                        children: [
+                          Text(
+                            'Em Alta',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                          const SizedBox(width: 6),
+                          const Icon(
+                            Icons.local_fire_department_outlined,
+                            size: 20,
+                            color: AppColors.primary,
+                          ),
+                        ],
                       ),
-                      childCount: vm.popular.length,
                     ),
                   ),
-                ),
-                const SliverToBoxAdapter(
-                  child: SizedBox(height: 96),
-                ),
-              ],
+                  SliverPadding(
+                    padding: const EdgeInsets.all(AppSpacing.marginMain),
+                    sliver: SliverGrid(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: AppSpacing.stackMd,
+                        crossAxisSpacing: AppSpacing.gutter,
+                        childAspectRatio: 0.56,
+                      ),
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) => MovieCard(
+                          movie: vm.popular[index],
+                          genreName: vm.popular[index].genreIds.isNotEmpty
+                              ? vm.genreName(vm.popular[index].genreIds.first)
+                              : null,
+                          onTap: () => _openMovie(context, vm.popular[index]),
+                        ),
+                        childCount: vm.popular.length,
+                      ),
+                    ),
+                  ),
+                  if (vm.isLoadingMorePopular)
+                    const SliverToBoxAdapter(
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: AppSpacing.stackMd),
+                        child: Center(
+                          child: SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: AppColors.primary,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  const SliverToBoxAdapter(
+                    child: SizedBox(height: 96),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
