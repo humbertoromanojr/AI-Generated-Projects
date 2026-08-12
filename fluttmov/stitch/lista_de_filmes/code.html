@@ -1,0 +1,288 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FLUTTMOV - Category</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#5d4200",
+                    "on-tertiary": "#00315b",
+                    "tertiary-fixed": "#d3e4ff",
+                    "inverse-primary": "#7b5800",
+                    "on-secondary": "#2f3131",
+                    "on-tertiary-fixed-variant": "#004881",
+                    "surface-tint": "#f4be4f",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "primary": "#ffce6c",
+                    "on-surface": "#e5e2e1",
+                    "surface-container-high": "#2a2a2a",
+                    "on-surface-variant": "#d3c5b0",
+                    "on-tertiary-container": "#004b85",
+                    "surface": "#131313",
+                    "surface-container-highest": "#353535",
+                    "secondary-fixed": "#e3e2e2",
+                    "outline-variant": "#4f4636",
+                    "secondary": "#c7c6c6",
+                    "tertiary-container": "#88bcff",
+                    "background": "#131313",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#c7c6c6",
+                    "on-secondary-fixed-variant": "#464747",
+                    "on-error": "#690005",
+                    "on-primary-container": "#604500",
+                    "on-background": "#e5e2e1",
+                    "primary-fixed": "#ffdea4",
+                    "inverse-on-surface": "#313030",
+                    "surface-variant": "#353535",
+                    "primary-fixed-dim": "#f4be4f",
+                    "on-secondary-container": "#b8b8b8",
+                    "surface-container-low": "#1c1b1b",
+                    "surface-dim": "#131313",
+                    "on-primary": "#412d00",
+                    "secondary-container": "#484949",
+                    "surface-bright": "#393939",
+                    "inverse-surface": "#e5e2e1",
+                    "tertiary-fixed-dim": "#a2c9ff",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-tertiary-fixed": "#001c38",
+                    "outline": "#9b8f7c",
+                    "error-container": "#93000a",
+                    "on-primary-fixed": "#261900",
+                    "primary-container": "#e5b143",
+                    "surface-container": "#20201f",
+                    "tertiary": "#bbd7ff",
+                    "on-error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "40px",
+                    "stack-md": "24px",
+                    "margin-main": "20px",
+                    "stack-sm": "8px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-xl": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "title-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-xl": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "30px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "28px",
+                            {
+                                    "lineHeight": "34px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "title-md": [
+                            "18px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen pb-24">
+<!-- Top App Bar (Hidden on Mobile, Visible on Desktop/Tablet if needed, keeping for JSON requirement but matching responsive rule) -->
+<header class="hidden md:flex fixed top-0 left-0 w-full z-50 justify-between items-center px-margin-main py-4 bg-background/80 backdrop-blur-xl transition-opacity duration-300">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="movie">movie</span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter">FLUTTMOV</h1>
+</div>
+<div class="flex items-center gap-4 text-secondary">
+<!-- Avatars/Actions would go here -->
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A cinematic, low-key lighting portrait of a mysterious user looking away, black and white noir style, dramatic shadows, highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs_r-jMXjnGxz9-Lkz0qXuwpIONQrnNENLmyg5fiI-6tUUhCKf1trxNWmrOJSORozHzc8pcGYJOwAgJwG8MZTJ-Z-HaqjV9EpsgaurFA8KGVOtmFqbioQHN-FekL-I9O0WfvVnBvOJvGK0iNa5EgpYOg0ckurVBceQMKrIXn3vp31CTXXbqp1r_WBqNxZVRB_jl4_8XE08zCVpsMR9k4_JUvymQePkMIyAg8j6XYzcNB1NTHBZWRpL">
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="w-full max-w-[1200px] mx-auto md:pt-24 relative">
+<!-- Category Header (Parallax Style) -->
+<section class="relative w-full h-[200px] md:h-[300px] overflow-hidden md:rounded-b-2xl mb-stack-md flex items-end justify-center px-margin-main pb-stack-sm md:pb-stack-md">
+<div class="absolute inset-0 z-0 bg-cover bg-center" data-alt="A moody, cinematic noir movie poster background. Dark alleys, fog, dramatic high-contrast lighting with deep shadows. Minimalist art house aesthetic, subtle film grain. High end, moody atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCYAET6eaMfd1mmMKZqeIzhRdFRgtrHGrX0LRSkJMGV9vChRONzLLs5WvrLag1F_nxjNkYt9GRSc2UkNesp9w3G-icPN36f_J1JWZDpsRcN71RvG-TKXXJho7czn6k5sIoAEGOhL-SGhhKf5wW7gLJRL4zWlQ5P7u7vuEXQLh9HZEGoa1-Cl_wdRqttQZGi4fQB8GGeHGqLj9lKOovWVZCRGuy_8bxqKTAULwP242zGUv3y2HmN-TtM')"></div>
+<div class="absolute inset-0 z-10 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
+<h1 class="relative z-20 font-headline-xl text-headline-xl text-on-background text-center drop-shadow-md">Cinema de Arte</h1>
+</section>
+<!-- Continuity Line (Aesthetic detail) -->
+<div class="hidden md:block absolute top-[300px] left-1/2 -translate-x-1/2 w-[1px] h-24 bg-gradient-to-b from-primary/50 to-transparent z-0"></div>
+<!-- Movie List Container -->
+<section class="px-margin-main flex flex-col gap-gutter relative z-10">
+<!-- Horizontal Card 1 -->
+<article class="flex flex-row gap-gutter bg-surface rounded-lg p-3 border border-outline-variant/30 hover:border-outline-variant/60 transition-colors group">
+<div class="w-[100px] h-[150px] shrink-0 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A minimalist, high-contrast black and white movie poster for an art house film. A solitary figure silhouetted against a bright, abstract geometric light source. Dramatic shadows, film grain, cinematic composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv_l3Hj4mwua1r63zstkCH5yKvl9qE_3htR-NSd80ZRysX7hVJ-v85c5E70X2VRfZ2SvVTBaMaCqTvXh86OxImN92aZDEWjb3PRvojL5rOgH9PuQrV1jDql18OWIRbTfk4wB5a6bi89kPuCKkEVCrrQY3VNQu-i8A79OHe6S87NMuzJznCYeS1Gl9628nWQsz3mRpKYvoPGMKsODuEg-8M2lI0YNAqoW62FZZ3uIYdLKXkiiatNCJx">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div>
+<h2 class="font-title-md text-title-md text-on-background mb-1">O Silêncio Noturno</h2>
+<p class="font-body-sm text-body-sm text-secondary line-clamp-2">A detective navigates a city devoid of sound to solve a crime only he can hear. A visually stunning, dialogue-free masterpiece.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary px-2 py-1 rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+                            4.8
+                        </span>
+<span class="font-body-sm text-body-sm text-secondary">2023</span>
+</div>
+</div>
+</article>
+<!-- Horizontal Card 2 -->
+<article class="flex flex-row gap-gutter bg-surface rounded-lg p-3 border border-outline-variant/30 hover:border-outline-variant/60 transition-colors group">
+<div class="w-[100px] h-[150px] shrink-0 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A surreal, dreamlike movie poster art. A distorted cityscape reflected in a puddle of water under neon lights, but the colors are muted and desaturated, leaning heavily into noir aesthetics with deep blacks and stark whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXueo9NiNzhShVnQLjk18CdhnyEN8Z9osjPsGxk8ZQSIBv5h38mltXUCmXzoC7BmRvsLSCZPvXLH3921UD39d3cyBGtZhsr0mfNhOqBBhjKvQVQiKXyaYoHfOQTX6214xJZ5jImipV5t7d_UMcbtNtVCxNAxqrXSEdzqP6jyOxaLeQ8ZxCcDMnudTa40a2SM_pnxqZe1J_FdbwqJ-XHKy7PuuHJ0BgsSMBQBh81tFWkprsGM601Ibo">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div>
+<h2 class="font-title-md text-title-md text-on-background mb-1">Reflexos Perdidos</h2>
+<p class="font-body-sm text-body-sm text-secondary line-clamp-2">An exploration of identity in a city where mirrors show alternative realities instead of reflections. Complex and haunting.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary px-2 py-1 rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+                            4.5
+                        </span>
+<span class="font-body-sm text-body-sm text-secondary">2021</span>
+</div>
+</div>
+</article>
+<!-- Horizontal Card 3 -->
+<article class="flex flex-row gap-gutter bg-surface rounded-lg p-3 border border-outline-variant/30 hover:border-outline-variant/60 transition-colors group">
+<div class="w-[100px] h-[150px] shrink-0 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract cinematic poster design. A single, glowing white line cutting through a vast expanse of pure black. Minimalist, high tension, mysterious, deep shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJOt9Hoi-EeVYgfGnVZDfT3YUq9PQgFNWAAZyMLhtZ7oQwMkVYxkv4OVfZkinXrC-HwKJFe9cXxeo7U7A4D2bFbmmOnpYCifAlGymEmkFuPjWJfsw7ahbyn6Nq0bYN_jmbfNavFoB9gu4jml8cutFg2xVeW7uO7emv3kXXhV2OEy3Ml1Rf4FUjmFrT_vXJppcR1P6r8BmlxDOW8BEYCkwBjmoneAM3NuoItEmkNU3jkRYZG3CfZ8hI">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div>
+<h2 class="font-title-md text-title-md text-on-background mb-1">A Linha Tênue</h2>
+<p class="font-body-sm text-body-sm text-secondary line-clamp-2">A psychological thriller exploring the boundaries between sanity and obsession inside the mind of an aging painter.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary px-2 py-1 rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+                            4.9
+                        </span>
+<span class="font-body-sm text-body-sm text-secondary">2024</span>
+</div>
+</div>
+</article>
+<!-- Horizontal Card 4 -->
+<article class="flex flex-row gap-gutter bg-surface rounded-lg p-3 border border-outline-variant/30 hover:border-outline-variant/60 transition-colors group">
+<div class="w-[100px] h-[150px] shrink-0 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Classic noir aesthetic poster. A smoking gun on a velvet desk under a single stark spotlight. Deep shadows, high contrast, elegant typography placeholder, vintage crime feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRMRv_HIhG9qH8UmZa3e-2L0BW4_TC0nygOeArwqyGs2yHGHxKbbrD3fZ7Jf1AQw-zsC1PjN2mh47He3uLKVHz48v8fhuZ6r_V6XsLQdF9hulM_BS6H7qz8HnXJCdVUq62KhUBAixRFDAOfrBVwfig1Sh6eB3PqgCe-dZMybkOZCJUlsrNvyc41s55agskubqKp748aqmUlmNzMNoh0O_Ns85QjXGdgfYwn89QQEfuoCr7rKm_di3R">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+</div>
+<div class="flex flex-col justify-between flex-1 py-1">
+<div>
+<h2 class="font-title-md text-title-md text-on-background mb-1">Veludo e Cinzas</h2>
+<p class="font-body-sm text-body-sm text-secondary line-clamp-2">A slow-burn mystery set in a 1950s jazz club where every patron has a secret and the truth is hidden in the music.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary px-2 py-1 rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+                            4.2
+                        </span>
+<span class="font-body-sm text-body-sm text-secondary">2019</span>
+</div>
+</div>
+</article>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile Only) - Using "Search" as active based on prompt requirement -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin-main py-stack-sm pb-8 bg-background/80 backdrop-blur-xl border-none transition-all duration-300 ease-in-out">
+<!-- Home (Inactive) -->
+<button class="flex flex-col items-center justify-center text-secondary hover:text-primary/80 transition-colors">
+<span class="material-symbols-outlined text-2xl mb-1" data-icon="home">home</span>
+</button>
+<!-- Search (Active - per prompt "Search (active)") -->
+<button class="flex flex-col items-center justify-center text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl mb-1" data-icon="search">search</span>
+</button>
+<!-- Profile (Inactive) -->
+<button class="flex flex-col items-center justify-center text-secondary hover:text-primary/80 transition-colors">
+<span class="material-symbols-outlined text-2xl mb-1" data-icon="person">person</span>
+</button>
+</nav>
+
+
+</body></html>
