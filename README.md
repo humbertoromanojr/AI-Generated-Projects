@@ -64,7 +64,13 @@ All the projects I'm working on will be done using the Opencode IDE, because it'
 
 ## FluttMov Project 🥇
 
-- Project uses the TMDB Movies and TV Shows API
+- Project uses the TMDB Movies and TV Shows API, Structure and Architecture from Uncle Bob.
+
+## FluttMovie Project 🥇
+
+- Project uses the TMDB Movies and TV Shows API, Structure and Architecture from Flutter Docs.
+  - https://docs.flutter.dev/app-architecture
+  - https://docs.flutter.dev/ai/best-practices/structure-output
 
 ## Demonstration
 
