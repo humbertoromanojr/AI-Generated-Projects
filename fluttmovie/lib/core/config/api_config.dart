@@ -1,7 +1,7 @@
 class ApiConfig {
   static const String apiKey = String.fromEnvironment(
     'TMDB_API_KEY',
-    defaultValue: '5c5f3fb3ac39d0fe9ee2b2cedf921b35',
+    defaultValue: 'sua-api-key-here',
   );
 
   static const String baseUrl = 'https://api.themoviedb.org/3';
