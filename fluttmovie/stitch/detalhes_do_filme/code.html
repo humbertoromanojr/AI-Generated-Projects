@@ -1,0 +1,212 @@
+<!DOCTYPE html><html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FLUTTMOV - Movie Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#5d4200",
+                        "on-tertiary": "#00315b",
+                        "tertiary-fixed": "#d3e4ff",
+                        "inverse-primary": "#7b5800",
+                        "on-secondary": "#2f3131",
+                        "on-tertiary-fixed-variant": "#004881",
+                        "surface-tint": "#f4be4f",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "primary": "#ffce6c",
+                        "on-surface": "#e5e2e1",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface-variant": "#d3c5b0",
+                        "on-tertiary-container": "#004b85",
+                        "surface": "#131313",
+                        "surface-container-highest": "#353535",
+                        "secondary-fixed": "#e3e2e2",
+                        "outline-variant": "#4f4636",
+                        "secondary": "#c7c6c6",
+                        "tertiary-container": "#88bcff",
+                        "background": "#131313",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-error": "#690005",
+                        "on-primary-container": "#604500",
+                        "on-background": "#e5e2e1",
+                        "primary-fixed": "#ffdea4",
+                        "inverse-on-surface": "#313030",
+                        "surface-variant": "#353535",
+                        "primary-fixed-dim": "#f4be4f",
+                        "on-secondary-container": "#b8b8b8",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-dim": "#131313",
+                        "on-primary": "#412d00",
+                        "secondary-container": "#484949",
+                        "surface-bright": "#393939",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-fixed-dim": "#a2c9ff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed": "#001c38",
+                        "outline": "#9b8f7c",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#261900",
+                        "primary-container": "#e5b143",
+                        "surface-container": "#20201f",
+                        "tertiary": "#bbd7ff",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "40px",
+                        "stack-md": "24px",
+                        "margin-main": "20px",
+                        "stack-sm": "8px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0D0D0D; /* Applying explicit dark mode background requested by prompt if theme misses it */
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased md:max-w-[480px] md:mx-auto relative min-h-screen pb-[100px]">
+<!-- Hero Section -->
+<div class="relative w-full h-[320px]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Cinematic still from a dark neo-noir thriller movie. A shadowy figure stands in an alleyway illuminated by a single flickering neon sign casting an amber glow. Rain slicked streets reflect the urban grit. The atmosphere is tense, moody, and highly atmospheric. High contrast lighting with deep blacks and sharp highlights. Cinematic color grading." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXIWw7yWElQPllzVxJUtWpIa7sF1uC6BBtlTTzor-aSqL2AHamR-fwmJ2HgFTYwSz5q-JMyCcbtIR9bL2CXV9cs3GNMqb_xvmBWUiDm-1icrSZQoJZGgA793mN4RvWkyUAJpSjI4_tQ9DjifWjlzGYPtfkcoiqFUQoXfAuTZXoKvSbqKImqpvxYBmlTR8TiKoCD9-SgHH1q_XliPfrHYUG0RLRfK9w7NKf4-xOnG9UI1tqdxiP-o2o')"></div>
+<!-- Controls -->
+<button class="absolute top-margin-main left-margin-main w-10 h-10 rounded-full bg-surface-container-high/50 backdrop-blur-md flex items-center justify-center text-on-surface hover:bg-surface-container-high/80 transition-colors z-10">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Overlay Gradient & Title -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D]/60 to-transparent flex flex-col justify-end p-margin-main">
+<div class="flex justify-between items-end">
+<div class="flex-1">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-stack-sm drop-shadow-lg">Nightcall</h1>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm">
+<span class="">2024</span>
+<span class="w-1 h-1 rounded-full bg-on-surface-variant"></span>
+<span class="">Thriller, Noir</span>
+<span class="w-1 h-1 rounded-full bg-on-surface-variant"></span>
+<span class="">1h 58m</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+<button class="text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite_border">favorite_border</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Details Section -->
+<main class="px-margin-main py-stack-md flex flex-col gap-stack-lg">
+<!-- Ratings -->
+<div class="flex items-center gap-gutter">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-title-md text-title-md text-on-surface">4.8</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">Crítica</span>
+</div>
+<div class="w-px h-6 bg-surface-container-highest"></div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary" data-icon="star_half" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star_half</span>
+<span class="font-title-md text-title-md text-on-surface">4.5</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">Público</span>
+</div>
+</div>
+<!-- Sinopse -->
+<section>
+<h2 class="font-title-md text-title-md text-on-surface mb-stack-sm">Sinopse</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Um detetive desiludido é arrastado de volta ao submundo de neon de uma metrópole corrompida quando um caso aparentemente simples de desaparecimento revela uma conspiração que ameaça expor os segredos mais sombrios da cidade. Entre becos úmidos e arranha-céus reluzentes, ele deve decidir o que sacrificar pela verdade.
+            </p>
+</section>
+<!-- Elenco -->
+<section>
+<h2 class="font-title-md text-title-md text-on-surface mb-stack-sm">Elenco</h2>
+<div class="flex overflow-x-auto gap-gutter pb-4 hide-scrollbar -mx-margin-main px-margin-main">
+<!-- Actor 1 -->
+<div class="flex flex-col items-center flex-shrink-0 w-20">
+<img class="w-16 h-16 rounded-full object-cover mb-2 border border-surface-container-highest" data-alt="Headshot of a rugged, intense male actor with stubble, dramatic side lighting, dark background, noir aesthetic, cinematic quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc_gSeGPnjG_z3dRvWmtYcqxxE69F1lDDB3E6Kf5t6xV2ibdpUau3ldYr7voxQMb_RDfgWQ52W1PIdFtf5_1VvvNGk7a38vcnCLd2BUnFb0-Sr8-XhGenmhvL_ft9mHwaGgeD-28P7x0uCmZOhuI_hJPMmGQmyukvBw3Rsooq8lqLB76pOz7Qj85IuljLi8wbj-h6WdN5EZ5q54TBGJRMSOKt1XltmvSHDV1lCjxUinUL9qIv97c1X">
+<span class="font-label-caps text-label-caps text-on-surface text-center line-clamp-2">Elias Thorne</span>
+</div>
+<!-- Actor 2 -->
+<div class="flex flex-col items-center flex-shrink-0 w-20">
+<img class="w-16 h-16 rounded-full object-cover mb-2 border border-surface-container-highest" data-alt="Headshot of a mysterious female actress with sharp features, dark hair, wearing a sleek black coat, soft blue rim light, moody noir cinematic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1Jnlbe-1ABNHgQgE_mRE3rfBgsQA6T4mIRHs-NdHQ5ZuNAlMHlynCbh9Mi1Wvh13w_lstsIPfc7qu9PosNM2A_zRKGjzX0XIw0boUDeTV_nTddKuuu9jNYZAh8k0OUkEjC5UYXe9DRsBC2JEPRaHivBUQ8CffTVxUFuRNSfYQlP-qzplRY-uFN6eBGxlUpG4KDa4cqxCU2x8yx-w44GFD7n6bwyIx7GA4xAxyA3od83b4O3fgxCou">
+<span class="font-label-caps text-label-caps text-on-surface text-center line-clamp-2">Vera Vance</span>
+</div>
+<!-- Actor 3 -->
+<div class="flex flex-col items-center flex-shrink-0 w-20">
+<img class="w-16 h-16 rounded-full object-cover mb-2 border border-surface-container-highest" data-alt="Headshot of an older male actor with a weathered face, wearing a classic trench coat, smoking a cigar, high contrast lighting, black and white noir feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRj5z-NGQNqIT3gX7maRyumHgW6kdn8PFz2tbJf0BgDcSjrzw4BVzFaA3nFBRphR25iw7bywvIegS4_WiuJDqh-Y6c_weHFcmpKfaYSlgqNBETkxzqbpkRqnNUADfxhL1QxkV5nUxMhSXRzqDnY4dq3IE_GwlmXCYn2wPBocSjJtKMPw5ar5-Rk2rhu_wXbjyWCYdXx2tnXLH0uGccOs5CVt6cWd9Kglmn9ZgV9Hm1UOYSlwaFZUwK">
+<span class="font-label-caps text-label-caps text-on-surface text-center line-clamp-2">Marcus Reed</span>
+</div>
+<!-- Actor 4 -->
+<div class="flex flex-col items-center flex-shrink-0 w-20">
+<img class="w-16 h-16 rounded-full object-cover mb-2 border border-surface-container-highest" data-alt="Headshot of a young male actor, looking nervous, wearing a sharp suit, neon reflections on his face, cyberpunk noir aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6mk87hd4fkCPZ3zAPf_XC9TVCRzoW5aGWK4iMoJAKJdkqT5DZDAdKI5sM3ZtxYptemWnxOOzKDfm0mBJZgDZH9xva4vlwqk4Hyl5ogmxuV2pr8inBoneytYJCXbxYkzafY-wrHrB0KrxOe-kn9Te_4dXq5KNsQnz7tCEiyvQqvo-qV5qsyfVyCq9QGBXf1O5Mh37xsMdEO21VkNdD_6FqlPe3nUzVQK4C_5zCKYkd0hQ5bHEkYBEh">
+<span class="font-label-caps text-label-caps text-on-surface text-center line-clamp-2">Julian Dax</span>
+</div>
+</div>
+</section>
+<!-- Director -->
+<section class="mb-stack-lg">
+<h2 class="font-title-md text-title-md text-on-surface mb-stack-sm">Diretor</h2>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant font-title-md">JD</div>
+<span class="font-body-md text-body-md text-on-surface">J.D. Silva</span>
+</div>
+</section>
+</main>
+<!-- Fixed Action Button -->
+<div class="fixed bottom-0 left-0 w-full p-margin-main bg-gradient-to-t from-background via-background to-transparent z-50 md:max-w-[480px] md:left-1/2 md:-translate-x-1/2">
+<button class="w-full bg-primary-container text-on-primary-container font-title-md text-title-md py-4 rounded-lg flex items-center justify-center gap-2 shadow-[0_0_12px_rgba(229,177,67,0.2)] hover:shadow-[0_0_20px_rgba(229,177,67,0.4)] transition-all">
+<span class="material-symbols-outlined" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+            Assistir Agora
+        </button>
+</div>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
+
+</body></html>
