@@ -55,6 +55,7 @@ primary source of truth for API usage and conventions.
   `ThemeData`/`ColorScheme`, using `Theme.of(context)` for all styling.
 - New code MUST be formatted with `dart format` and follow the documented
   Dart style guide.
+- Always follow the practical tips from Uncle Bob's _Clean Code_
 
 Rationale: Staying current on stable releases keeps the project on supported
 tooling, while official docs are the authoritative reference, avoiding
