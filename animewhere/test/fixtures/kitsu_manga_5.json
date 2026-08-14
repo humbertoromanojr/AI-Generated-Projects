@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id": "5",
+    "type": "manga",
+    "attributes": {
+      "slug": "one-piece",
+      "canonicalTitle": "One Piece",
+      "synopsis": "As a child, Monkey D. Luffy was inspired to become a pirate.",
+      "averageRating": "82.35",
+      "subtype": "manga",
+      "posterImage": {
+        "original": "https://media.kitsu.io/manga/poster_images/5/original.jpg"
+      }
+    }
+  }
+}

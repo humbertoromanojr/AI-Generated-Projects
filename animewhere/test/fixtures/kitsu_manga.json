@@ -1,0 +1,73 @@
+{
+  "data": [
+    {
+      "id": "5",
+      "type": "manga",
+      "attributes": {
+        "slug": "one-piece",
+        "canonicalTitle": "One Piece",
+        "synopsis": "As a child, Monkey D. Luffy was inspired to become a pirate.",
+        "averageRating": "82.35",
+        "subtype": "manga",
+        "posterImage": {
+          "original": "https://media.kitsu.io/manga/poster_images/5/original.jpg"
+        }
+      }
+    },
+    {
+      "id": "2",
+      "type": "manga",
+      "attributes": {
+        "slug": "naruto",
+        "canonicalTitle": "Naruto",
+        "synopsis": "Naruto Uzumaki is a young ninja with a sealed power.",
+        "averageRating": "76.18",
+        "subtype": "manga",
+        "posterImage": {
+          "original": "https://media.kitsu.io/manga/poster_images/2/original.jpg"
+        }
+      }
+    },
+    {
+      "id": "42",
+      "type": "manga",
+      "attributes": {
+        "slug": "one-punch-man",
+        "canonicalTitle": "One-Punch Man",
+        "averageRating": "84.10",
+        "subtype": "manga",
+        "posterImage": {
+          "original": "https://media.kitsu.io/manga/poster_images/42/original.jpg"
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "manga",
+      "attributes": {
+        "canonicalTitle": "Skipped: empty id",
+        "posterImage": {
+          "original": "https://media.kitsu.io/manga/poster_images/x.jpg"
+        }
+      }
+    },
+    {
+      "id": "999",
+      "type": "manga",
+      "attributes": {
+        "canonicalTitle": "",
+        "posterImage": {
+          "original": "https://media.kitsu.io/manga/poster_images/y.jpg"
+        }
+      }
+    },
+    {
+      "id": "998",
+      "type": "manga",
+      "attributes": {
+        "canonicalTitle": "Skipped: no poster image",
+        "posterImage": null
+      }
+    }
+  ]
+}

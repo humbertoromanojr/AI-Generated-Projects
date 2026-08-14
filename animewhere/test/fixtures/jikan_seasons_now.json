@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "mal_id": 53008,
+      "url": "https://myanimelist.net/anime/53008/SPY_x_FAMILY_Season_2",
+      "title": "SPY x FAMILY Season 2",
+      "type": "TV",
+      "score": 8.54,
+      "year": 2023,
+      "season": "fall",
+      "images": {
+        "jpg": {
+          "large_image_url": "https://cdn.myanimelist.net/images/anime/1009/138849l.jpg"
+        }
+      }
+    },
+    {
+      "mal_id": 54595,
+      "url": "https://myanimelist.net/anime/54595/Kaijuu_8-gou",
+      "title": "Kaijuu 8-gou",
+      "type": "TV",
+      "score": 7.8,
+      "year": 2024,
+      "season": "spring",
+      "images": {
+        "jpg": {
+          "large_image_url": "https://cdn.myanimelist.net/images/anime/1673/136306l.jpg"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "data": {
+    "Page": {
+      "media": [
+        {
+          "id": 21,
+          "title": {
+            "romaji": "One Piece",
+            "english": "One Piece"
+          },
+          "coverImage": {
+            "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-l8Q7JzqY8Vkq.jpg"
+          },
+          "description": "Gol D. Roger was known as the Pirate King.",
+          "averageScore": 84,
+          "format": "TV",
+          "seasonYear": 1999
+        },
+        {
+          "id": 5114,
+          "title": {
+            "romaji": null,
+            "english": "Fullmetal Alchemist: Brotherhood"
+          },
+          "coverImage": {
+            "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5114-bBx6N0ZHV3Hv.jpg"
+          },
+          "description": "Two brothers search for a Philosopher's Stone.",
+          "averageScore": 90,
+          "format": "TV",
+          "seasonYear": 2009
+        },
+        {
+          "id": 16498,
+          "title": {
+            "romaji": "Shingeki no Kyojin",
+            "english": null
+          },
+          "coverImage": {
+            "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-f9M2Qq6j0xqV.jpg"
+          },
+          "description": null,
+          "averageScore": null,
+          "format": "TV",
+          "seasonYear": 2013
+        },
+        {
+          "id": null,
+          "title": {
+            "romaji": "Skipped: null id",
+            "english": null
+          },
+          "coverImage": {
+            "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/x.jpg"
+          }
+        },
+        {
+          "id": 1,
+          "title": {
+            "romaji": null,
+            "english": null
+          },
+          "coverImage": {
+            "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/y.jpg"
+          }
+        },
+        {
+          "id": 2,
+          "title": {
+            "romaji": "Skipped: no cover image",
+            "english": null
+          },
+          "coverImage": {
+            "large": null
+          }
+        }
+      ]
+    }
+  }
+}

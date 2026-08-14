@@ -1,0 +1,70 @@
+{
+  "data": [
+    {
+      "mal_id": 21,
+      "url": "https://myanimelist.net/anime/21/One_Piece",
+      "title": "One Piece",
+      "type": "TV",
+      "score": 8.71,
+      "year": 1999,
+      "images": {
+        "jpg": {
+          "image_url": "https://cdn.myanimelist.net/images/anime/6/73245.jpg",
+          "large_image_url": "https://cdn.myanimelist.net/images/anime/6/73245l.jpg",
+          "small_image_url": "https://cdn.myanimelist.net/images/anime/6/73245s.jpg"
+        }
+      }
+    },
+    {
+      "mal_id": 5114,
+      "url": "https://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood",
+      "title": "Fullmetal Alchemist: Brotherhood",
+      "type": "TV",
+      "score": 9.09,
+      "year": 2009,
+      "images": {
+        "jpg": {
+          "large_image_url": "https://cdn.myanimelist.net/images/anime/1208/94745l.jpg"
+        }
+      }
+    },
+    {
+      "mal_id": 16498,
+      "url": "https://myanimelist.net/anime/16498/Shingeki_no_Kyojin",
+      "title": "Shingeki no Kyojin",
+      "type": "TV",
+      "score": 8.53,
+      "year": 2013,
+      "images": {
+        "jpg": {
+          "large_image_url": "https://cdn.myanimelist.net/images/anime/10/47347l.jpg"
+        }
+      }
+    },
+    {
+      "mal_id": 0,
+      "title": "Skipped: mal_id must be positive",
+      "images": {
+        "jpg": {
+          "large_image_url": "https://cdn.myanimelist.net/images/anime/x.jpg"
+        }
+      }
+    },
+    {
+      "mal_id": 1,
+      "title": "",
+      "images": {
+        "jpg": {
+          "large_image_url": "https://cdn.myanimelist.net/images/anime/y.jpg"
+        }
+      }
+    },
+    {
+      "mal_id": 2,
+      "title": "Skipped: no large image",
+      "images": {
+        "jpg": {}
+      }
+    }
+  ]
+}

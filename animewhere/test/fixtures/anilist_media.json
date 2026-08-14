@@ -1,0 +1,18 @@
+{
+  "data": {
+    "Media": {
+      "id": 21,
+      "title": {
+        "romaji": "One Piece",
+        "english": "One Piece"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-l8Q7JzqY8Vkq.jpg"
+      },
+      "description": "Gol D. Roger was known as the Pirate King.",
+      "averageScore": 84,
+      "format": "TV",
+      "seasonYear": 1999
+    }
+  }
+}

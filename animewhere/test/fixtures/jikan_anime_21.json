@@ -1,0 +1,17 @@
+{
+  "data": {
+    "mal_id": 21,
+    "url": "https://myanimelist.net/anime/21/One_Piece",
+    "title": "One Piece",
+    "type": "TV",
+    "score": 8.71,
+    "year": 1999,
+    "episodes": 1100,
+    "synopsis": "Gol D. Roger was known as the Pirate King, the strongest and most infamous being to have sailed the Grand Line.",
+    "images": {
+      "jpg": {
+        "large_image_url": "https://cdn.myanimelist.net/images/anime/6/73245l.jpg"
+      }
+    }
+  }
+}
