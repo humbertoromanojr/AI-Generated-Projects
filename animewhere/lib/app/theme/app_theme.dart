@@ -99,6 +99,7 @@ class AppTheme {
     cardTheme: const CardThemeData(
       color: surfaceDeep,
       surfaceTintColor: Colors.transparent,
+      elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(AppDimens.radiusLg)),
       ),

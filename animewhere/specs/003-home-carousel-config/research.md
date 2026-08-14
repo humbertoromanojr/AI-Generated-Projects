@@ -35,3 +35,17 @@
     - Column spacing between provider sections.
     - Padding for carousel containers.
     - Typography used for section titles (Jikan, AniList, K1tsu).
+
+## Phase 0 Findings (from implementation, T004)
+
+### Kitsu Edge API Smoke-Check Results — NO MISMATCHES FOUND
+
+Live verification on 2026-08-14 against `https://kitsu.io/api/edge`:
+
+- **`/anime?page[limit]=10&page[offset]=0`**: returned `meta.count` = 22265, `data` list of exactly 10 items. First item: id `1`, type `anime`, `canonicalTitle` "Cowboy Bebop", `averageRating` `"82.27"` (string), `synopsis` (1091 chars), `subtype` `"TV"`, `posterImage` map with `tiny/small/medium/large/original` variants.
+- **`/manga?page[limit]=10&page[offset]=0`**: identical structure; first item `canonicalTitle` "Guardian Dog", `averageRating` `"71.37"`, `posterImage.original` reachable.
+- **Poster URL reachability**: `HEAD https://media.kitsu.app/anime/poster_images/1/original.jpg` → HTTP 200, `Content-Type: image/jpeg`.
+
+**Decision**: The existing `lib/data/sources/kitsu/kitsu_title_mapper.dart` already parses every field the Edge API returns — `data[].id`, `type`, `attributes.canonicalTitle`, `attributes.averageRating` (as String), `attributes.synopsis`, `attributes.subtype`, and `attributes.posterImage.original`. No field/type mismatches were found, so US2 (T014/T015) reduces to verification rather than fixes. The Edge API's JSON:API shape (`data` list, `attributes` object) matches the mapper's expectations exactly.
+**Rationale**: Verifying live before changing code avoids unnecessary edits; the integration is already correct.
+**Alternatives considered**: Testing the `/anime/{id}` detail endpoint — deferred to US2 if detail rendering shows issues.

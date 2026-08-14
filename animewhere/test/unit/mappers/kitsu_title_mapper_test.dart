@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -64,6 +65,73 @@ void main() {
         throwsA(isA<ParseError>()),
       );
       expect(() => mapper.mapList('not json'), throwsA(isA<ParseError>()));
+    });
+
+    test('treats a non-string averageRating as no score without failing', () {
+      final titles = mapper.mapList(
+        jsonEncode({
+          'data': [
+            {
+              'id': '1',
+              'type': 'anime',
+              'attributes': {
+                'canonicalTitle': 'Numeric Rating',
+                'averageRating': 82,
+                'posterImage': {
+                  'original': 'https://example.com/a.jpg',
+                },
+              },
+            },
+          ],
+        }),
+      );
+
+      expect(titles, hasLength(1));
+      expect(titles.first.title, 'Numeric Rating');
+      expect(titles.first.score, isNull);
+    });
+
+    test('skips entries with a missing canonicalTitle', () {
+      final titles = mapper.mapList(
+        jsonEncode({
+          'data': [
+            {
+              'id': '1',
+              'type': 'anime',
+              'attributes': {
+                'posterImage': {'original': 'https://example.com/a.jpg'},
+              },
+            },
+          ],
+        }),
+      );
+
+      expect(titles, isEmpty);
+    });
+
+    test('falls back through posterImage size variants when original is '
+        'missing', () {
+      final titles = mapper.mapList(
+        jsonEncode({
+          'data': [
+            {
+              'id': '1',
+              'type': 'anime',
+              'attributes': {
+                'canonicalTitle': 'Fallback Poster',
+                'posterImage': {
+                  'large': 'https://example.com/large.jpg',
+                  'medium': 'https://example.com/medium.jpg',
+                },
+              },
+            },
+          ],
+        }),
+      );
+
+      expect(titles, hasLength(1));
+      expect(titles.first.title, 'Fallback Poster');
+      expect(titles.first.imageUrl, 'https://example.com/large.jpg');
     });
   });
 }

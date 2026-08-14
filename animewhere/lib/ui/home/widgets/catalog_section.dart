@@ -33,7 +33,12 @@ class CatalogSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(section.label, style: textTheme.titleLarge),
+            Text(
+              section.label,
+              style: textTheme.headlineLarge?.copyWith(
+                color: theme.colorScheme.primary,
+              ),
+            ),
             const SizedBox(height: 12),
             TitleCarousel(
               result: section.carousel,

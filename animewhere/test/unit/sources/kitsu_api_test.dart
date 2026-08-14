@@ -61,5 +61,22 @@ void main() {
       expect(captured!.queryParameters['page[limit]'], '10');
       expect(captured!.queryParameters['sort'], '-popularityRank');
     });
+
+    test('manga respects a custom page limit', () async {
+      Uri? captured;
+      final api = KitsuApi(
+        httpClient: AppHttpClient(
+          inner: MockClient((request) async {
+            captured = request.url;
+            return http.Response('{"data": []}', 200);
+          }),
+        ),
+      );
+
+      await api.manga(page: 1, limit: 5);
+
+      expect(captured!.queryParameters['page[limit]'], '5');
+      expect(captured!.queryParameters['page[offset]'], '10');
+    });
   });
 }

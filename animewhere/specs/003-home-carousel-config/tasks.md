@@ -23,8 +23,8 @@
 
 **Purpose**: Confirm baseline health and configure tooling for this feature
 
-- [ ] T001 Run baseline quality gates and confirm green (`dart format` with no diffs, `flutter analyze` zero issues, `flutter test` full suite) before making changes
-- [ ] T002 [P] Add `flutter_launcher_icons` dev dependency and config block to `pubspec.yaml` (image: `assets/icons/animeWhere.png`, android: true, ios: true)
+- [X] T001 Run baseline quality gates and confirm green (`dart format` with no diffs, `flutter analyze` zero issues, `flutter test` full suite) before making changes
+- [X] T002 [P] Add `flutter_launcher_icons` dev dependency and config block to `pubspec.yaml` (image: `assets/icons/animeWhere.png`, android: true, ios: true)
 
 ---
 
@@ -34,8 +34,8 @@
 
 **CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T003 Create `lib/core/config/carousel_config.dart` defining `autoSlideInterval` (Duration of 5 seconds) and loop-pause constants used by US1 auto-slide
-- [ ] T004 Smoke-check the Kitsu Edge API (`GET https://kitsu.io/api/edge/anime?page[limit]=10&page[offset]=0`) returns a JSON body with a `data` list, and record any field/type mismatches with `lib/data/sources/kitsu/kitsu_title_mapper.dart` for US2
+- [X] T003 Create `lib/core/config/carousel_config.dart` defining `autoSlideInterval` (Duration of 5 seconds) and loop-pause constants used by US1 auto-slide
+- [X] T004 Smoke-check the Kitsu Edge API (`GET https://kitsu.io/api/edge/anime?page[limit]=10&page[offset]=0`) returns a JSON body with a `data` list, and record any field/type mismatches with `lib/data/sources/kitsu/kitsu_title_mapper.dart` for US2
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -51,16 +51,16 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T005 [P] [US1] Widget test asserting carousel advances page automatically after `autoSlideInterval` without user input in `test/widget/title_carousel_test.dart`
-- [ ] T006 [P] [US1] Widget test asserting carousel loops from last page back to first in `test/widget/title_carousel_test.dart`
-- [ ] T007 [P] [US1] Widget test asserting auto-slide pauses on user drag/tap and resumes after idle in `test/widget/title_carousel_test.dart`
+- [X] T005 [P] [US1] Widget test asserting carousel advances page automatically after `autoSlideInterval` without user input in `test/widget/title_carousel_test.dart`
+- [X] T006 [P] [US1] Widget test asserting carousel loops from last page back to first in `test/widget/title_carousel_test.dart`
+- [X] T007 [P] [US1] Widget test asserting auto-slide pauses on user drag/tap and resumes after idle in `test/widget/title_carousel_test.dart`
 
 ### Implementation for User Story 1
 
-- [ ] T008 [US1] Add auto-slide `Timer` and `PageController.animateToPage` logic to `_TitleCarouselState` in `lib/ui/home/widgets/title_carousel.dart` using `autoSlideInterval` from `lib/core/config/carousel_config.dart`
-- [ ] T009 [US1] Implement continuous looping (wrap to first page after last, no dead-end) in `lib/ui/home/widgets/title_carousel.dart`
-- [ ] T010 [US1] Pause auto-slide on manual interaction (drag/tap) and resume after idle via `NotificationListener<ScrollNotification>`/`onPageChanged` in `lib/ui/home/widgets/title_carousel.dart`
-- [ ] T011 [US1] Pause/resume auto-slide on app lifecycle changes via `WidgetsBindingObserver` in `lib/ui/home/widgets/title_carousel.dart` (edge case: backgrounding)
+- [X] T008 [US1] Add auto-slide `Timer` and `PageController.animateToPage` logic to `_TitleCarouselState` in `lib/ui/home/widgets/title_carousel.dart` using `autoSlideInterval` from `lib/core/config/carousel_config.dart`
+- [X] T009 [US1] Implement continuous looping (wrap to first page after last, no dead-end) in `lib/ui/home/widgets/title_carousel.dart`
+- [X] T010 [US1] Pause auto-slide on manual interaction (drag/tap) and resume after idle via `NotificationListener<ScrollNotification>`/`onPageChanged` in `lib/ui/home/widgets/title_carousel.dart`
+- [X] T011 [US1] Pause/resume auto-slide on app lifecycle changes via `WidgetsBindingObserver` in `lib/ui/home/widgets/title_carousel.dart` (edge case: backgrounding)
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -76,14 +76,14 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T012 [P] [US2] Unit test Kitsu mapper handling of Edge API variants (missing `posterImage`, non-string `averageRating`, missing `canonicalTitle`) in `test/unit/mappers/kitsu_title_mapper_test.dart`
-- [ ] T013 [P] [US2] Unit test Kitsu API query params (`sort`, `page[limit]`, `page[offset]`) for anime/manga endpoints in `test/unit/sources/kitsu_api_test.dart`
+- [X] T012 [P] [US2] Unit test Kitsu mapper handling of Edge API variants (missing `posterImage`, non-string `averageRating`, missing `canonicalTitle`) in `test/unit/mappers/kitsu_title_mapper_test.dart`
+- [X] T013 [P] [US2] Unit test Kitsu API query params (`sort`, `page[limit]`, `page[offset]`) for anime/manga endpoints in `test/unit/sources/kitsu_api_test.dart`
 
 ### Implementation for User Story 2
 
-- [ ] T014 [US2] Fix `_posterImageUrl` in `lib/data/sources/kitsu/kitsu_title_mapper.dart` to fall back through `posterImage` size variants (tiny/small/medium/large/original) per findings from T004
-- [ ] T015 [US2] Fix `anime()`/`manga()` in `lib/data/sources/kitsu/kitsu_api.dart` query parameters if T004 found mismatches against the Edge API response
-- [ ] T016 [US2] Verify Kitsu titles/images render in the Kitsu `CatalogSection` on Home and fix any wiring in `lib/ui/home/widgets/catalog_section.dart`
+- [X] T014 [US2] Fix `_posterImageUrl` in `lib/data/sources/kitsu/kitsu_title_mapper.dart` to fall back through `posterImage` size variants (tiny/small/medium/large/original) per findings from T004
+- [X] T015 [US2] Fix `anime()`/`manga()` in `lib/data/sources/kitsu/kitsu_api.dart` query parameters if T004 found mismatches against the Edge API response
+- [X] T016 [US2] Verify Kitsu titles/images render in the Kitsu `CatalogSection` on Home and fix any wiring in `lib/ui/home/widgets/catalog_section.dart`
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
@@ -97,10 +97,10 @@
 
 ### Implementation for User Story 3
 
-- [ ] T017 [US3] Run `dart run flutter_launcher_icons` to generate Android mipmap and iOS app-icon assets from `assets/icons/animeWhere.png`
-- [ ] T018 [P] [US3] Set `android:label="AW"` on `<application>` in `android/app/src/main/AndroidManifest.xml`
-- [ ] T019 [P] [US3] Set `CFBundleDisplayName` to `AW` in `ios/Runner/Info.plist`
-- [ ] T020 [P] [US3] Verify generated icons are referenced in `android/app/src/main/res/mipmap-*/` and `ios/Runner/Assets.xcassets/AppIcon.appiconset/` (no default Flutter icon remains)
+- [X] T017 [US3] Run `dart run flutter_launcher_icons` to generate Android mipmap and iOS app-icon assets from `assets/icons/animeWhere.png`
+- [X] T018 [P] [US3] Set `android:label="AW"` on `<application>` in `android/app/src/main/AndroidManifest.xml`
+- [X] T019 [P] [US3] Set `CFBundleDisplayName` to `AW` in `ios/Runner/Info.plist`
+- [X] T020 [P] [US3] Verify generated icons are referenced in `android/app/src/main/res/mipmap-*/` and `ios/Runner/Assets.xcassets/AppIcon.appiconset/` (no default Flutter icon remains)
 
 **Checkpoint**: At this point, User Stories 1, 2 AND 3 should all work independently
 
@@ -114,13 +114,13 @@
 
 ### Tests for User Story 4
 
-- [ ] T021 [P] [US4] Widget test asserting Home renders three sections labeled `jikan`, `anilist`, `kitsu` in order in `test/widget/home_view_test.dart`
+- [X] T021 [P] [US4] Widget test asserting Home renders three sections labeled `jikan`, `anilist`, `kitsu` in order in `test/widget/home_view_test.dart`
 
 ### Implementation for User Story 4
 
-- [ ] T022 [US4] Audit `lib/ui/home/home_view.dart` against `stitch/animewhere/DESIGN.md`; fix section ordering, section titles, and vertical spacing deviations
-- [ ] T023 [P] [US4] Audit `lib/ui/home/widgets/title_carousel.dart` and `lib/ui/home/widgets/infinite_title_row.dart` against stitch tokens (2:3 poster aspect ratio, glassmorphism not shadows)
-- [ ] T024 [US4] Update `lib/app/theme/app_theme.dart` and `lib/app/theme/app_text_theme.dart` to map any stitch tokens currently missing from `ThemeData`
+- [X] T022 [US4] Audit `lib/ui/home/home_view.dart` against `stitch/animewhere/DESIGN.md`; fix section ordering, section titles, and vertical spacing deviations
+- [X] T023 [P] [US4] Audit `lib/ui/home/widgets/title_carousel.dart` and `lib/ui/home/widgets/infinite_title_row.dart` against stitch tokens (2:3 poster aspect ratio, glassmorphism not shadows)
+- [X] T024 [US4] Update `lib/app/theme/app_theme.dart` and `lib/app/theme/app_text_theme.dart` to map any stitch tokens currently missing from `ThemeData`
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -130,10 +130,10 @@
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T025 [P] Run `dart format` and `flutter analyze`; fix all formatting and lint issues
-- [ ] T026 Run the full `flutter test` suite and fix any regressions across `test/unit/`, `test/widget/`, `test/integration/`
-- [ ] T027 Run `quickstart.md` validation scenarios (auto-slide, Kitsu image display, AW icon/name, stitch layout) and record outcomes
-- [ ] T028 [P] Update any stale documentation references (e.g., app name "animewhere" -> "AW") in `README.md` and `specs/003-home-carousel-config/` artifacts
+- [X] T025 [P] Run `dart format` and `flutter analyze`; fix all formatting and lint issues
+- [X] T026 Run the full `flutter test` suite and fix any regressions across `test/unit/`, `test/widget/`, `test/integration/`
+- [X] T027 Run `quickstart.md` validation scenarios (auto-slide, Kitsu image display, AW icon/name, stitch layout) and record outcomes
+- [X] T028 [P] Update any stale documentation references (e.g., app name "animewhere" -> "AW") in `README.md` and `specs/003-home-carousel-config/` artifacts
 
 ---
 

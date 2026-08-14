@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart' hide Title;
 
 import 'package:animewhere/app/theme/app_theme.dart';
+import 'package:animewhere/core/config/carousel_config.dart';
 import 'package:animewhere/app/theme/app_text_theme.dart';
 import 'package:animewhere/core/models/title.dart';
 import 'package:animewhere/core/models/title_page.dart';
@@ -31,14 +33,62 @@ class TitleCarousel extends StatefulWidget {
   State<TitleCarousel> createState() => _TitleCarouselState();
 }
 
-class _TitleCarouselState extends State<TitleCarousel> {
+class _TitleCarouselState extends State<TitleCarousel>
+    with WidgetsBindingObserver {
   final PageController _controller = PageController(viewportFraction: 0.72);
   int _page = 0;
+  Timer? _autoSlideTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    _scheduleAutoSlide();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _scheduleAutoSlide();
+    } else {
+      _autoSlideTimer?.cancel();
+    }
+  }
 
   @override
   void dispose() {
+    _autoSlideTimer?.cancel();
+    WidgetsBinding.instance.removeObserver(this);
     _controller.dispose();
     super.dispose();
+  }
+
+  void _scheduleAutoSlide() {
+    _autoSlideTimer?.cancel();
+    _autoSlideTimer = Timer(
+      CarouselConfig.autoSlideInterval,
+      _advanceAutoSlide,
+    );
+  }
+
+  void _advanceAutoSlide() {
+    if (!mounted || !_controller.hasClients) return;
+    final result = widget.result;
+    if (result is! Data<TitlePage>) return;
+    final titles = result.value.titles;
+    if (titles.length <= 1) return;
+
+    final next = (_page + 1) % titles.length;
+    _controller.animateToPage(
+      next,
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.easeOut,
+    );
+    _scheduleAutoSlide();
+  }
+
+  void _handleInteraction(PointerDownEvent event) {
+    _scheduleAutoSlide();
   }
 
   @override
@@ -64,35 +114,38 @@ class _TitleCarouselState extends State<TitleCarousel> {
   }
 
   Widget _data(BuildContext context, List<Title> titles) {
-    return Stack(
-      alignment: Alignment.bottomCenter,
-      children: [
-        PageView.builder(
-          controller: _controller,
-          itemCount: titles.length,
-          onPageChanged: (index) => setState(() => _page = index),
-          itemBuilder: (context, index) => _featuredCard(titles[index]),
-        ),
-        Positioned(
-          bottom: 16,
-          child: _GlassNavigation(
-            page: _page,
-            count: titles.length,
-            onPrevious: _page > 0
-                ? () => _controller.previousPage(
-                    duration: const Duration(milliseconds: 250),
-                    curve: Curves.easeOut,
-                  )
-                : null,
-            onNext: _page < titles.length - 1
-                ? () => _controller.nextPage(
-                    duration: const Duration(milliseconds: 250),
-                    curve: Curves.easeOut,
-                  )
-                : null,
+    return Listener(
+      onPointerDown: _handleInteraction,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          PageView.builder(
+            controller: _controller,
+            itemCount: titles.length,
+            onPageChanged: (index) => setState(() => _page = index),
+            itemBuilder: (context, index) => _featuredCard(titles[index]),
           ),
-        ),
-      ],
+          Positioned(
+            bottom: 16,
+            child: _GlassNavigation(
+              page: _page,
+              count: titles.length,
+              onPrevious: _page > 0
+                  ? () => _controller.previousPage(
+                      duration: const Duration(milliseconds: 250),
+                      curve: Curves.easeOut,
+                    )
+                  : null,
+              onNext: _page < titles.length - 1
+                  ? () => _controller.nextPage(
+                      duration: const Duration(milliseconds: 250),
+                      curve: Curves.easeOut,
+                    )
+                  : null,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

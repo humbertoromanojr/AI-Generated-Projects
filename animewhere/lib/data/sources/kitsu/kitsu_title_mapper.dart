@@ -56,8 +56,11 @@ class KitsuTitleMapper {
 
   String? _posterImageUrl(Object? posterImage) {
     if (posterImage is! Map<String, dynamic>) return null;
-    final url = posterImage['original'];
-    return url is String ? url : null;
+    for (final key in const ['original', 'large', 'medium', 'small', 'tiny']) {
+      final url = posterImage[key];
+      if (url is String && url.isNotEmpty) return url;
+    }
+    return null;
   }
 
   Map<String, dynamic> _decode(String body) {

@@ -62,6 +62,18 @@ The infinite catalog feed (three provider sections, 10-item carousels,
 infinite rows) is validated per
 [quickstart](specs/002-infinite-catalog-feed/quickstart.md), with results in
 [validation-results.md](specs/002-infinite-catalog-feed/validation-results.md).
+The home carousel auto-slide, Kitsu Edge API integration, AW launcher
+label/icon, and stitch layout are validated per
+[quickstart](specs/003-home-carousel-config/quickstart.md), with results in
+[validation-results.md](specs/003-home-carousel-config/validation-results.md).
+
+## App branding
+
+The launcher label is **AW** on Android (`android:label`) and iOS
+(`CFBundleDisplayName`); the launcher icon is generated from
+`assets/icons/animeWhere.png` (see `flutter_launcher_icons` in
+`pubspec.yaml`). The in-app brand and web share preview keep the
+"AnimeWhere" name.
 
 ## Project structure
 

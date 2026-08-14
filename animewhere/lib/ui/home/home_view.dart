@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' hide Title;
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import 'package:animewhere/app/theme/app_theme.dart';
 import 'package:animewhere/app/theme/app_text_theme.dart';
 import 'package:animewhere/core/models/title.dart';
 import 'package:animewhere/ui/home/home_view_model.dart';
@@ -33,7 +34,14 @@ class HomeView extends StatelessWidget {
                     ),
                     child: Text(
                       'AnimeWhere',
-                      style: Theme.of(context).textTheme.headlineLarge,
+                      style: Theme.of(context).textTheme.headlineLarge
+                          ?.copyWith(
+                            color: AppTheme.primary,
+                            fontSize: 24,
+                            height: 1,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: -1.2,
+                          ),
                     ),
                   ),
                   const SizedBox(height: AppDimens.spacingStackMd),
