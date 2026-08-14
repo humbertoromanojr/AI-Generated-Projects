@@ -13,18 +13,26 @@ class JikanApi {
   final AppHttpClient _httpClient;
   final JikanTitleMapper _mapper;
 
-  Future<List<Title>> topAnime({int limit = 10}) async {
+  Future<List<Title>> topAnime({int page = 1, int limit = 10}) async {
     final uri = Uri.parse(
       '$baseUrl/top/anime',
-    ).replace(queryParameters: {'limit': '$limit'});
+    ).replace(queryParameters: {'page': '$page', 'limit': '$limit'});
     final body = await _httpClient.getJson(uri);
     return _mapper.mapList(body);
   }
 
-  Future<List<Title>> seasonsNow({int limit = 20}) async {
+  Future<List<Title>> seasonsNow({int page = 1, int limit = 10}) async {
     final uri = Uri.parse(
       '$baseUrl/seasons/now',
-    ).replace(queryParameters: {'limit': '$limit'});
+    ).replace(queryParameters: {'page': '$page', 'limit': '$limit'});
+    final body = await _httpClient.getJson(uri);
+    return _mapper.mapList(body);
+  }
+
+  Future<List<Title>> seasonsUpcoming({int page = 1, int limit = 10}) async {
+    final uri = Uri.parse(
+      '$baseUrl/seasons/upcoming',
+    ).replace(queryParameters: {'page': '$page', 'limit': '$limit'});
     final body = await _httpClient.getJson(uri);
     return _mapper.mapList(body);
   }

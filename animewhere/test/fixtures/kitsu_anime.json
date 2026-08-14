@@ -1,0 +1,41 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "type": "anime",
+      "attributes": {
+        "slug": "cowboy-bebop",
+        "canonicalTitle": "Cowboy Bebop",
+        "synopsis": "The misadventures of the Bebop crew.",
+        "averageRating": "89.20",
+        "subtype": "TV",
+        "posterImage": {
+          "original": "https://media.kitsu.io/anime/poster_images/1/original.jpg"
+        }
+      }
+    },
+    {
+      "id": "2",
+      "type": "anime",
+      "attributes": {
+        "slug": "attack-on-titan",
+        "canonicalTitle": "Shingeki no Kyojin",
+        "averageRating": "84.10",
+        "subtype": "TV",
+        "posterImage": {
+          "original": "https://media.kitsu.io/anime/poster_images/2/original.jpg"
+        }
+      }
+    },
+    {
+      "id": "",
+      "type": "anime",
+      "attributes": {
+        "canonicalTitle": "Skipped: empty id",
+        "posterImage": {
+          "original": "https://media.kitsu.io/anime/poster_images/x.jpg"
+        }
+      }
+    }
+  ]
+}

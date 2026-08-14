@@ -35,10 +35,10 @@ implementation and testing of each story.
 before any changes. This feature extends the existing project (feature 001
 complete), so no scaffolding is required.
 
-- [ ] T001 Run `flutter pub get`, `dart format` (no diffs), `flutter analyze`
+- [X] T001 Run `flutter pub get`, `dart format` (no diffs), `flutter analyze`
       (0 errors, 0 warnings), and `flutter test` (full suite green) to
       establish the baseline before changes
-- [ ] T002 [P] Confirm no new dependencies are needed: verify `pubspec.yaml`
+- [X] T002 [P] Confirm no new dependencies are needed: verify `pubspec.yaml`
       already provides `http` (pagination), `flutter_test` +
       `integration_test` (paging tests), and `cached_network_image` (lazy
       posters)
@@ -57,41 +57,41 @@ per-page cache. Blocking: the home sections (US1) need first pages, carousels
 
 ### Tests for Foundational (constitution Principle V — write FIRST, verify FAIL)
 
-- [ ] T003 [P] Unit test `JikanApi` pagination (`page`/`limit` passthrough,
+- [X] T003 [P] Unit test `JikanApi` pagination (`page`/`limit` passthrough,
       `seasonsUpcoming` hitting `/seasons/upcoming`) via MockClient in
       `test/unit/sources/jikan_api_test.dart`
-- [ ] T004 [P] Unit test `AniListApi` pagination (`page`/`perPage` variables,
+- [X] T004 [P] Unit test `AniListApi` pagination (`page`/`perPage` variables,
       `topRatedAnime` sending `SCORE_DESC`) via MockClient in
       `test/unit/sources/anilist_api_test.dart`
-- [ ] T005 [P] Unit test `KitsuApi` pagination (`page[offset]` = page*10,
+- [X] T005 [P] Unit test `KitsuApi` pagination (`page[offset]` = page*10,
       `anime()` hitting `/edge/anime`) via MockClient in
       `test/unit/sources/kitsu_api_test.dart`
-- [ ] T006 [P] Extend `KitsuTitleMapper` test: anime items map to
+- [X] T006 [P] Extend `KitsuTitleMapper` test: anime items map to
       `TitleKind.anime` via the JSON:API `type` field in
       `test/unit/mappers/kitsu_title_mapper_test.dart`
-- [ ] T007 [P] Rework `CatalogRepository` test: page-based accessors return
+- [X] T007 [P] Rework `CatalogRepository` test: page-based accessors return
       `Result<TitlePage>`, `hasMore` flips at <10 items, per-page cache
       distinct per page in `test/unit/repositories/catalog_repository_test.dart`
 
 ### Implementation for Foundational
 
-- [ ] T008 Create immutable `TitlePage` model (`titles: List<Title>`,
+- [X] T008 Create immutable `TitlePage` model (`titles: List<Title>`,
       `hasMore: bool`) in `lib/core/models/title_page.dart`
-- [ ] T009 [P] Add `page` param to `topAnime`/`seasonsNow` and add
+- [X] T009 [P] Add `page` param to `topAnime`/`seasonsNow` and add
       `seasonsUpcoming({page, limit = 10})` (`GET /seasons/upcoming`) in
       `lib/data/sources/jikan/jikan_api.dart`
-- [ ] T010 [P] Add `page` variable to `AniListQueries.pageQuery` and add
+- [X] T010 [P] Add `page` variable to `AniListQueries.pageQuery` and add
       `topRatedAnime({page, perPage = 10})` (`sort: SCORE_DESC`) + pass `page`
       on existing feeds in `lib/data/sources/anilist/anilist_queries.dart` and
       `lib/data/sources/anilist/anilist_api.dart`
-- [ ] T011 [P] Replace `page[limit]`-only paging with `page[limit]=10` +
+- [X] T011 [P] Replace `page[limit]`-only paging with `page[limit]=10` +
       `page[offset]=page*10` on `manga` and add `anime({page})`
       (`GET /edge/anime?sort=-popularityRank`) in
       `lib/data/sources/kitsu/kitsu_api.dart`
-- [ ] T012 [P] Derive `Title.kind` from the item-level `type` field (`anime`
+- [X] T012 [P] Derive `Title.kind` from the item-level `type` field (`anime`
       -> `TitleKind.anime`, otherwise `manga`) in
       `lib/data/sources/kitsu/kitsu_title_mapper.dart`
-- [ ] T013 Rework `CatalogRepository` to page-based accessors returning
+- [X] T013 Rework `CatalogRepository` to page-based accessors returning
       `Result<TitlePage>`: `jikanCarousel()`/`anilistCarousel()`/
       `kitsuCarousel()` (fixed page 1, 10 items) and paged row accessors
       (`jikanSeasonal(page)`, `jikanUpcoming(page)`, `anilistPopular(page)`,
@@ -117,33 +117,33 @@ detail; blocking one API only errors that section.
 
 ### Tests for User Story 1 (constitution Principle V — write FIRST, verify FAIL)
 
-- [ ] T014 [P] [US1] Rework `HomeViewModel` unit test: three sections
+- [X] T014 [P] [US1] Rework `HomeViewModel` unit test: three sections
       (`jikan`/`anilist`/`kitsu`), each with carousel + two rows; initial
       load populates first pages; one provider failing keeps the other two
       sections loaded in `test/unit/view_models/home_view_model_test.dart`
-- [ ] T015 [P] [US1] Rework `HomeView` widget test: three section headers in
+- [X] T015 [P] [US1] Rework `HomeView` widget test: three section headers in
       order, carousel + two rows per section, tap navigates to detail,
       loading/error/empty states in `test/widget/home_view_test.dart`
 
 ### Implementation for User Story 1
 
-- [ ] T016 [US1] Add `SectionState` (id, label, carousel result, rows) and
+- [X] T016 [US1] Add `SectionState` (id, label, carousel result, rows) and
       `InfiniteRowState` (id, label, titles, nextPage, hasMore, isLoadingMore,
       loadFailed) containers in `lib/ui/home/home_view_model.dart`
-- [ ] T017 [US1] Implement `HomeViewModel` section composition: `load()`
+- [X] T017 [US1] Implement `HomeViewModel` section composition: `load()`
       fetches all carousels + first row pages concurrently via `Future.wait`,
       each section independent (isolation per FR-008), refresh keeps previous
       content in `lib/ui/home/home_view_model.dart`
-- [ ] T018 [P] [US1] Create `CatalogSection` widget (label header + carousel +
+- [X] T018 [P] [US1] Create `CatalogSection` widget (label header + carousel +
       two rows, tap/share/retry wiring) in `lib/ui/home/widgets/catalog_section.dart`
-- [ ] T019 [P] [US1] Create `InfiniteTitleRow` widget (horizontal list of
+- [X] T019 [P] [US1] Create `InfiniteTitleRow` widget (horizontal list of
       accumulated titles, loading/error/empty states, retry affordance; the
       load-more trigger arrives in US3) in `lib/ui/home/widgets/infinite_title_row.dart`
-- [ ] T020 [US1] Rework `HomeView` to render three `CatalogSection`s in fixed
+- [X] T020 [US1] Rework `HomeView` to render three `CatalogSection`s in fixed
       order (`jikan`, `anilist`, `kitsu`) in `lib/ui/home/home_view.dart`
-- [ ] T021 [US1] Delete `lib/ui/home/widgets/title_row.dart` and update all
+- [X] T021 [US1] Delete `lib/ui/home/widgets/title_row.dart` and update all
       imports/references (`home_view.dart`) to `InfiniteTitleRow`
-- [ ] T022 [P] [US1] Add fixtures `jikan_seasons_upcoming.json` and
+- [X] T022 [P] [US1] Add fixtures `jikan_seasons_upcoming.json` and
       `kitsu_anime.json`, and extend the `browse_share_test` MockClient to
       serve `/seasons/upcoming`, `/edge/anime`, and AniList Page queries in
       `test/fixtures/` and `test/integration/browse_share_test.dart`
@@ -163,19 +163,19 @@ carousel requests.
 
 ### Tests for User Story 2 (constitution Principle V — write FIRST, verify FAIL)
 
-- [ ] T023 [P] [US2] Unit test carousel accessors request exactly 10 titles
+- [X] T023 [P] [US2] Unit test carousel accessors request exactly 10 titles
       once (fixed page 1, limit/perPage/page[limit] = 10, no page param
       exposed) in `test/unit/repositories/catalog_repository_test.dart`
-- [ ] T024 [P] [US2] Widget test: carousels render exactly 10 items and issue
+- [X] T024 [P] [US2] Widget test: carousels render exactly 10 items and issue
       no further requests while idle (request-count assertion via fake APIs)
       in `test/widget/home_view_test.dart`
 
 ### Implementation for User Story 2
 
-- [ ] T025 [US2] Pin carousel accessors (`jikanCarousel`, `anilistCarousel`,
+- [X] T025 [US2] Pin carousel accessors (`jikanCarousel`, `anilistCarousel`,
       `kitsuCarousel`) to page 1 with 10-item page size (no page parameter on
       carousel accessors) in `lib/data/repositories/catalog_repository.dart`
-- [ ] T026 [US2] Ensure `HomeViewModel` issues exactly one carousel request per
+- [X] T026 [US2] Ensure `HomeViewModel` issues exactly one carousel request per
       section on `load()` with no polling or idle auto-refetch in
       `lib/ui/home/home_view_model.dart`
 
@@ -196,22 +196,22 @@ parallel loads; at catalog end the row stops without an endless spinner.
 
 ### Tests for User Story 3 (constitution Principle V — write FIRST, verify FAIL)
 
-- [ ] T027 [P] [US3] Unit test `HomeViewModel.loadMore`: appends next page
+- [X] T027 [P] [US3] Unit test `HomeViewModel.loadMore`: appends next page
       exactly, single-flight guard blocks overlapping loads, `hasMore` flips
       false on a short page, duplicates (source+id) skipped, failure keeps
       loaded titles and sets retry state in
       `test/unit/view_models/home_view_model_test.dart`
-- [ ] T028 [P] [US3] Widget test `InfiniteTitleRow`: scrolling near the end
+- [X] T028 [P] [US3] Widget test `InfiniteTitleRow`: scrolling near the end
       triggers `onLoadMore`, trailing spinner while loading, end marker at
       exhaustion, row error with retry in `test/widget/home_view_test.dart`
 
 ### Implementation for User Story 3
 
-- [ ] T029 [US3] Implement `HomeViewModel.loadMore(section, row)`: guarded by
+- [X] T029 [US3] Implement `HomeViewModel.loadMore(section, row)`: guarded by
       `isLoadingMore`, appends next page, dedupes by `source`+`id`, flips
       `hasMore` false on a page with <10 items, sets `loadFailed` on error
       without discarding titles in `lib/ui/home/home_view_model.dart`
-- [ ] T030 [US3] Add the scroll trigger to `InfiniteTitleRow` (ScrollController
+- [X] T030 [US3] Add the scroll trigger to `InfiniteTitleRow` (ScrollController
       fires `onLoadMore` within ~200px of max extent when `hasMore` and not
       loading), plus trailing mini-spinner, quiet end marker, and row-level
       retry in `lib/ui/home/widgets/infinite_title_row.dart`
@@ -225,19 +225,19 @@ parallel loads; at catalog end the row stops without an endless spinner.
 **Purpose**: Improvements that affect multiple user stories and final
 validation
 
-- [ ] T031 [P] Run the full integration journey (browse 3-section home ->
+- [X] T031 [P] Run the full integration journey (browse 3-section home ->
       detail -> share) with the extended MockClient fixtures in
       `test/integration/browse_share_test.dart`
-- [ ] T032 [P] Run the `quickstart.md` validation scenarios manually (three
+- [X] T032 [P] Run the `quickstart.md` validation scenarios manually (three
       sections, 10-item carousels, infinite rows, failure isolation, detail/
       share regression) and record results in
       `specs/002-infinite-catalog-feed/validation-results.md`
-- [ ] T033 [P] Performance pass: verify per-page cache prevents duplicate
+- [X] T033 [P] Performance pass: verify per-page cache prevents duplicate
       requests, lazy `cached_network_image` posters, and no unbounded memory
       growth on rapid infinite scrolling (SC-003)
-- [ ] T034 [P] Update `README.md` if it documents the home layout (three
+- [X] T034 [P] Update `README.md` if it documents the home layout (three
       provider sections, infinite rows)
-- [ ] T035 Final quality gate: `dart format` (no diffs), `flutter analyze`
+- [X] T035 Final quality gate: `dart format` (no diffs), `flutter analyze`
       (0 errors, 0 warnings), `flutter test` (full suite green)
 
 ---

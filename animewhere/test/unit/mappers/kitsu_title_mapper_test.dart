@@ -46,6 +46,18 @@ void main() {
       expect(titles.map((t) => t.title), isNot(contains('Skipped')));
     });
 
+    test('maps anime items to TitleKind.anime via the item type', () async {
+      final titles = mapper.mapList(await fixture('kitsu_anime'));
+
+      expect(titles, hasLength(2));
+      expect(titles[0].kind, TitleKind.anime);
+      expect(titles[0].title, 'Cowboy Bebop');
+      expect(titles[1].kind, TitleKind.anime);
+      for (final title in titles) {
+        expect(title.isValid, isTrue);
+      }
+    });
+
     test('throws ParseError on malformed envelopes', () {
       expect(
         () => mapper.mapList('{"data": null}'),

@@ -2,8 +2,8 @@ class AniListQueries {
   AniListQueries._();
 
   static const String pageQuery = r'''
-query ($perPage: Int, $sort: [MediaSort]) {
-  Page(perPage: $perPage) {
+query ($page: Int, $perPage: Int, $sort: [MediaSort]) {
+  Page(page: $page, perPage: $perPage) {
     media(type: ANIME, sort: $sort) {
       id
       title {

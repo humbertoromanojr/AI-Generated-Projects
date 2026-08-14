@@ -6,6 +6,7 @@ import 'package:flutter/material.dart' hide Title;
 import 'package:animewhere/app/theme/app_theme.dart';
 import 'package:animewhere/app/theme/app_text_theme.dart';
 import 'package:animewhere/core/models/title.dart';
+import 'package:animewhere/core/models/title_page.dart';
 import 'package:animewhere/core/utils/result.dart';
 import 'package:animewhere/ui/widgets/error_view.dart';
 import 'package:animewhere/ui/widgets/loading_view.dart';
@@ -20,7 +21,7 @@ class TitleCarousel extends StatefulWidget {
     this.height = 280,
   });
 
-  final Result<List<Title>> result;
+  final Result<TitlePage> result;
   final void Function(Title title)? onTitleTap;
   final void Function(Title title)? onTitleShare;
   final VoidCallback? onRetry;
@@ -54,7 +55,10 @@ class _TitleCarouselState extends State<TitleCarousel> {
           error: (widget.result as Failure).error,
           onRetry: widget.onRetry ?? () {},
         ),
-        Data() => _data(context, (widget.result as Data).value),
+        Data<TitlePage>() => _data(
+          context,
+          (widget.result as Data<TitlePage>).value.titles,
+        ),
       },
     );
   }

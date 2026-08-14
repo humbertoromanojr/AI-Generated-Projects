@@ -13,9 +13,25 @@ class KitsuApi {
   final AppHttpClient _httpClient;
   final KitsuTitleMapper _mapper;
 
-  Future<List<Title>> manga({int limit = 10}) async {
+  Future<List<Title>> manga({int page = 0, int limit = 10}) async {
     final uri = Uri.parse('$baseUrl/manga').replace(
-      queryParameters: {'sort': '-popularityRank', 'page[limit]': '$limit'},
+      queryParameters: {
+        'sort': '-popularityRank',
+        'page[limit]': '$limit',
+        'page[offset]': '${page * 10}',
+      },
+    );
+    final body = await _httpClient.getJson(uri);
+    return _mapper.mapList(body);
+  }
+
+  Future<List<Title>> anime({int page = 0, int limit = 10}) async {
+    final uri = Uri.parse('$baseUrl/anime').replace(
+      queryParameters: {
+        'sort': '-popularityRank',
+        'page[limit]': '$limit',
+        'page[offset]': '${page * 10}',
+      },
     );
     final body = await _httpClient.getJson(uri);
     return _mapper.mapList(body);

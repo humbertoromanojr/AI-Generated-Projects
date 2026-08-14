@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:animewhere/core/models/title.dart';
 import 'package:animewhere/core/models/title_source.dart';
+import 'package:animewhere/core/models/title_page.dart';
 import 'package:animewhere/core/network/network_error.dart';
 import 'package:animewhere/core/utils/result.dart';
 import 'package:animewhere/data/repositories/catalog_repository.dart';
@@ -27,6 +28,7 @@ class _FakeJikanApi extends JikanApi {
     this.topError,
     this.seasonsError,
     this.topGate,
+    this.seasonsLoader,
   });
 
   final List<Title>? top;
@@ -34,46 +36,69 @@ class _FakeJikanApi extends JikanApi {
   AppException? topError;
   final AppException? seasonsError;
   final Completer<List<Title>>? topGate;
+  final Future<List<Title>> Function(int page)? seasonsLoader;
 
   @override
-  Future<List<Title>> topAnime({int limit = 10}) async {
+  Future<List<Title>> topAnime({int page = 1, int limit = 10}) async {
     if (topGate != null) return topGate!.future;
     if (topError != null) throw topError!;
     return top ?? <Title>[];
   }
 
   @override
-  Future<List<Title>> seasonsNow({int limit = 20}) async {
+  Future<List<Title>> seasonsNow({int page = 1, int limit = 10}) async {
     if (seasonsError != null) throw seasonsError!;
+    final loader = seasonsLoader;
+    if (loader != null) return loader(page);
+    return seasons ?? <Title>[];
+  }
+
+  @override
+  Future<List<Title>> seasonsUpcoming({int page = 1, int limit = 10}) async {
+    if (seasonsError != null) throw seasonsError!;
+    final loader = seasonsLoader;
+    if (loader != null) return loader(page);
     return seasons ?? <Title>[];
   }
 }
 
 class _FakeAniListApi extends AniListApi {
-  _FakeAniListApi({this.trending, this.popular});
+  _FakeAniListApi({this.trending, this.popular, this.topRated});
 
   final List<Title>? trending;
   final List<Title>? popular;
+  final List<Title>? topRated;
 
   @override
-  Future<List<Title>> trendingAnime() async {
+  Future<List<Title>> trendingAnime({int page = 1}) async {
     return trending ?? <Title>[];
   }
 
   @override
-  Future<List<Title>> popularAnime() async {
+  Future<List<Title>> popularAnime({int page = 1}) async {
     return popular ?? <Title>[];
+  }
+
+  @override
+  Future<List<Title>> topRatedAnime({int page = 1}) async {
+    return topRated ?? <Title>[];
   }
 }
 
 class _FakeKitsuApi extends KitsuApi {
-  _FakeKitsuApi({this.mangaData});
+  _FakeKitsuApi({this.mangaData, this.animeData});
 
   final List<Title>? mangaData;
+  final List<Title>? animeData;
 
   @override
-  Future<List<Title>> manga({int limit = 10}) async {
+  Future<List<Title>> manga({int page = 0, int limit = 10}) async {
     return mangaData ?? <Title>[];
+  }
+
+  @override
+  Future<List<Title>> anime({int page = 0, int limit = 10}) async {
+    return animeData ?? <Title>[];
   }
 }
 
@@ -91,78 +116,110 @@ CatalogRepository _repo({
 
 void main() {
   group('HomeViewModel', () {
-    test('starts every section in the loading state', () {
-      final vm = HomeViewModel(
-        repository: _repo(jikan: _FakeJikanApi(top: [title(1)])),
-      );
+    test('initializes with three sections (jikan, anilist, kitsu)', () {
+      final vm = HomeViewModel(repository: _repo());
 
-      expect(vm.carousel, isA<Loading<List<Title>>>());
-      for (final row in vm.rows) {
-        expect(row.result, isA<Loading<List<Title>>>());
-      }
-      expect(vm.isInitialLoading, isTrue);
+      expect(vm.sections.length, 3);
+      expect(vm.sections[0].id, 'jikan');
+      expect(vm.sections[1].id, 'anilist');
+      expect(vm.sections[2].id, 'kitsu');
+
+      expect(vm.sections[0].label, 'Jikan');
+      expect(vm.sections[1].label, 'AniList');
+      expect(vm.sections[2].label, 'Kitsu');
+
+      expect(vm.sections[0].carousel, isA<Loading<TitlePage>>());
+      expect(vm.sections[1].carousel, isA<Loading<TitlePage>>());
+      expect(vm.sections[2].carousel, isA<Loading<TitlePage>>());
+
+      expect(vm.sections[0].rows.length, 2);
+      expect(vm.sections[1].rows.length, 2);
+      expect(vm.sections[2].rows.length, 2);
+
+      expect(vm.sections[0].rows[0].id, 'seasonal');
+      expect(vm.sections[0].rows[1].id, 'upcoming');
+      expect(vm.sections[1].rows[0].id, 'popular');
+      expect(vm.sections[1].rows[1].id, 'topRated');
+      expect(vm.sections[2].rows[0].id, 'manga');
+      expect(vm.sections[2].rows[1].id, 'anime');
     });
 
-    test('loads data into the carousel and every row', () async {
+    test('loads data into all three sections', () async {
       final vm = HomeViewModel(
         repository: _repo(
-          jikan: _FakeJikanApi(top: [title(1), title(2)], seasons: [title(3)]),
-          anilist: _FakeAniListApi(trending: [title(4)], popular: [title(5)]),
-          kitsu: _FakeKitsuApi(mangaData: [title(6)]),
+          jikan: _FakeJikanApi(
+            top: [title(1), title(2), title(3)],
+            seasons: [title(4)],
+            topError: null,
+          ),
+          anilist: _FakeAniListApi(
+            trending: [title(5)],
+            popular: [title(6)],
+            topRated: [title(7)],
+          ),
+          kitsu: _FakeKitsuApi(mangaData: [title(8)], animeData: [title(9)]),
         ),
       );
 
       await vm.load();
 
-      expect(vm.carousel, isA<Data<List<Title>>>());
-      expect((vm.carousel as Data<List<Title>>).value, hasLength(2));
+      expect(vm.sections[0].carousel, isA<Data<TitlePage>>());
+      expect(
+        (vm.sections[0].carousel as Data<TitlePage>).value.titles,
+        hasLength(3),
+      );
 
-      final rowsById = {for (final r in vm.rows) r.id: r};
+      expect(vm.sections[1].carousel, isA<Data<TitlePage>>());
       expect(
-        (rowsById['latest']!.result as Data<List<Title>>).value,
+        (vm.sections[1].carousel as Data<TitlePage>).value.titles,
         hasLength(1),
       );
+
+      expect(vm.sections[2].carousel, isA<Data<TitlePage>>());
       expect(
-        (rowsById['trending']!.result as Data<List<Title>>).value,
+        (vm.sections[2].carousel as Data<TitlePage>).value.titles,
         hasLength(1),
       );
-      expect(
-        (rowsById['popular']!.result as Data<List<Title>>).value,
-        hasLength(1),
-      );
-      expect(
-        (rowsById['manga']!.result as Data<List<Title>>).value,
-        hasLength(1),
-      );
+
+      expect(vm.sections[0].rows[0].titles, hasLength(1));
+      expect(vm.sections[0].rows[1].titles, hasLength(1));
+
       expect(vm.isInitialLoading, isFalse);
     });
 
-    test('a Jikan failure must not blank AniList and Kitsu rows', () async {
+    test('a Jikan failure must not blank the other two sections', () async {
       final jikan = _FakeJikanApi(
         top: [title(1)],
         seasons: [title(2)],
         topError: const HttpError(statusCode: 500),
         seasonsError: const RateLimitError(),
       );
+      final anilist = _FakeAniListApi(
+        trending: [title(3)],
+        popular: [title(4)],
+        topRated: [title(10)],
+      );
+      final kitsu = _FakeKitsuApi(mangaData: [title(5)], animeData: [title(6)]);
+
       final vm = HomeViewModel(
-        repository: _repo(
-          jikan: jikan,
-          anilist: _FakeAniListApi(trending: [title(4)], popular: [title(5)]),
-          kitsu: _FakeKitsuApi(mangaData: [title(6)]),
-        ),
+        repository: _repo(jikan: jikan, anilist: anilist, kitsu: kitsu),
       );
 
       await vm.load();
 
-      expect(vm.carousel, isA<Failure<List<Title>>>());
-      expect((vm.carousel as Failure<List<Title>>).error, isA<HttpError>());
+      expect(vm.sections[0].carousel, isA<Failure<TitlePage>>());
+      expect(
+        (vm.sections[0].carousel as Failure<TitlePage>).error,
+        isA<HttpError>(),
+      );
 
-      final rowsById = {for (final r in vm.rows) r.id: r};
-      expect(rowsById['latest']!.result, isA<Failure<List<Title>>>());
+      expect(vm.sections[1].carousel, isA<Data<TitlePage>>());
+      expect(vm.sections[2].carousel, isA<Data<TitlePage>>());
 
-      expect(rowsById['trending']!.result, isA<Data<List<Title>>>());
-      expect(rowsById['popular']!.result, isA<Data<List<Title>>>());
-      expect(rowsById['manga']!.result, isA<Data<List<Title>>>());
+      expect(vm.sections[1].rows[0].titles, hasLength(1));
+      expect(vm.sections[1].rows[1].titles, hasLength(1));
+      expect(vm.sections[2].rows[0].titles, hasLength(1));
+      expect(vm.sections[2].rows[1].titles, hasLength(1));
     });
 
     test(
@@ -172,13 +229,16 @@ void main() {
         final vm = HomeViewModel(repository: _repo(jikan: jikan));
 
         await vm.load();
-        expect(vm.carousel, isA<Data<List<Title>>>());
+        expect(vm.sections[0].carousel, isA<Data<TitlePage>>());
 
         jikan.topError = const RateLimitError();
         await vm.refresh();
 
-        expect(vm.carousel, isA<Data<List<Title>>>());
-        expect((vm.carousel as Data<List<Title>>).value, hasLength(1));
+        expect(vm.sections[0].carousel, isA<Data<TitlePage>>());
+        expect(
+          (vm.sections[0].carousel as Data<TitlePage>).value.titles,
+          hasLength(1),
+        );
       },
     );
 
@@ -193,14 +253,138 @@ void main() {
       final future = vm.load();
       await Future<void>.delayed(Duration.zero);
       expect(vm.isInitialLoading, isTrue);
-      expect(vm.carousel, isA<Loading<List<Title>>>());
+      expect(vm.sections[0].carousel, isA<Loading<TitlePage>>());
 
       gate.complete([title(1), title(2)]);
       await future;
 
       expect(vm.isInitialLoading, isFalse);
-      expect(vm.carousel, isA<Data<List<Title>>>());
+      expect(vm.sections[0].carousel, isA<Data<TitlePage>>());
       expect(notified, greaterThan(0));
+    });
+  });
+
+  group('HomeViewModel.loadMore', () {
+    List<Title> titles(int start, int count) =>
+        List.generate(count, (i) => title(start + i));
+
+    test('appends the next page exactly once', () async {
+      final jikan = _FakeJikanApi(
+        top: [title(1)],
+        seasonsLoader: (page) async =>
+            page == 1 ? titles(100, 10) : titles(200, 10),
+      );
+      final vm = HomeViewModel(repository: _repo(jikan: jikan));
+
+      await vm.load();
+      final row = vm.sections[0].rows[0];
+      expect(row.titles, hasLength(10));
+      expect(row.nextPage, 2);
+      expect(row.hasMore, isTrue);
+
+      await vm.loadMore('jikan', 'seasonal');
+
+      final updated = vm.sections[0].rows[0];
+      expect(updated.titles, hasLength(20));
+      expect(updated.titles.first.id, '100');
+      expect(updated.titles.last.id, '209');
+      expect(updated.nextPage, 3);
+      expect(updated.hasMore, isTrue);
+      expect(updated.isLoadingMore, isFalse);
+      expect(updated.loadFailed, isFalse);
+    });
+
+    test('single-flight guard blocks overlapping loads', () async {
+      final gate = Completer<List<Title>>();
+      var page2Requests = 0;
+      final jikan = _FakeJikanApi(
+        top: [title(1)],
+        seasonsLoader: (page) {
+          if (page == 1) return Future.value(titles(100, 10));
+          page2Requests++;
+          return gate.future;
+        },
+      );
+      final vm = HomeViewModel(repository: _repo(jikan: jikan));
+      await vm.load();
+
+      final first = vm.loadMore('jikan', 'seasonal');
+      final second = vm.loadMore('jikan', 'seasonal');
+      expect(page2Requests, 1);
+
+      gate.complete(titles(200, 10));
+      await Future.wait([first, second]);
+
+      final row = vm.sections[0].rows[0];
+      expect(row.titles, hasLength(20));
+      expect(row.isLoadingMore, isFalse);
+      expect(page2Requests, 1);
+    });
+
+    test('hasMore flips false on a short page', () async {
+      final jikan = _FakeJikanApi(
+        top: [title(1)],
+        seasonsLoader: (page) async =>
+            page == 1 ? titles(100, 10) : titles(200, 3),
+      );
+      final vm = HomeViewModel(repository: _repo(jikan: jikan));
+      await vm.load();
+
+      await vm.loadMore('jikan', 'seasonal');
+
+      final row = vm.sections[0].rows[0];
+      expect(row.titles, hasLength(13));
+      expect(row.hasMore, isFalse);
+      expect(row.isLoadingMore, isFalse);
+    });
+
+    test('duplicates by source+id are skipped', () async {
+      final jikan = _FakeJikanApi(
+        top: [title(1)],
+        seasonsLoader: (page) async => page == 1
+            ? titles(100, 10)
+            : [...titles(104, 4), ...titles(210, 6)],
+      );
+      final vm = HomeViewModel(repository: _repo(jikan: jikan));
+      await vm.load();
+
+      await vm.loadMore('jikan', 'seasonal');
+
+      final row = vm.sections[0].rows[0];
+      expect(row.titles, hasLength(16));
+      final ids = row.titles.map((t) => t.id).toSet();
+      expect(ids.length, row.titles.length);
+    });
+
+    test('failure keeps loaded titles and sets retry state', () async {
+      var failPage2 = true;
+      final jikan = _FakeJikanApi(
+        top: [title(1)],
+        seasonsLoader: (page) async {
+          if (page == 1) return titles(100, 10);
+          if (failPage2) {
+            failPage2 = false;
+            throw const RateLimitError();
+          }
+          return titles(200, 10);
+        },
+      );
+      final vm = HomeViewModel(repository: _repo(jikan: jikan));
+      await vm.load();
+
+      await vm.loadMore('jikan', 'seasonal');
+
+      final row = vm.sections[0].rows[0];
+      expect(row.titles, hasLength(10));
+      expect(row.loadFailed, isTrue);
+      expect(row.isLoadingMore, isFalse);
+      expect(row.hasMore, isTrue);
+      expect(row.nextPage, 2);
+
+      await vm.loadMore('jikan', 'seasonal');
+      final updated = vm.sections[0].rows[0];
+      expect(updated.loadFailed, isFalse);
+      expect(updated.titles, hasLength(20));
     });
   });
 }

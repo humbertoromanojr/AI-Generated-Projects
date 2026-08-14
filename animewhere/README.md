@@ -6,8 +6,14 @@ system share sheet.
 
 ## Features
 
-- **Browse** — featured carousel (Jikan top anime) plus Trending/Popular
-  (AniList), Latest/Simulcast (Jikan), and Manga (Kitsu) rows.
+- **Browse** — the home screen is organized into three provider sections in
+  fixed order (**Jikan**, **AniList**, **Kitsu**), each opening with a featured
+  carousel (10 items) followed by two horizontally scrollable recommendation
+  rows: Jikan → Seasonal/Upcoming, AniList → Popular/Top Rated, Kitsu →
+  Manga/Anime.
+- **Infinite rows** — the two rows in each section load the next 10 titles as
+  you scroll to a row's end, with a single in-flight request per row, no
+  duplicate titles, and a quiet stop at catalog end.
 - **Details** — tap any title to see its poster, description, type, and score,
   fetched from the source that supplied it.
 - **Share** — every title exposes a share action (carousel, rows, and detail)
@@ -52,6 +58,10 @@ The implementation is validated per the feature's
 [quickstart](specs/001-anime-manga-browser/quickstart.md) scenarios; results
 are recorded in
 [validation-results.md](specs/001-anime-manga-browser/validation-results.md).
+The infinite catalog feed (three provider sections, 10-item carousels,
+infinite rows) is validated per
+[quickstart](specs/002-infinite-catalog-feed/quickstart.md), with results in
+[validation-results.md](specs/002-infinite-catalog-feed/validation-results.md).
 
 ## Project structure
 

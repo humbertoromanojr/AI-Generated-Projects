@@ -14,13 +14,17 @@ class AniListApi {
   final AppHttpClient _httpClient;
   final AniListTitleMapper _mapper;
 
-  Future<List<Title>> trendingAnime() =>
-      _page(perPage: 10, sort: 'TRENDING_DESC');
+  Future<List<Title>> trendingAnime({int page = 1}) =>
+      _page(page: page, perPage: 10, sort: 'TRENDING_DESC');
 
-  Future<List<Title>> popularAnime() =>
-      _page(perPage: 20, sort: 'POPULARITY_DESC');
+  Future<List<Title>> popularAnime({int page = 1}) =>
+      _page(page: page, perPage: 10, sort: 'POPULARITY_DESC');
+
+  Future<List<Title>> topRatedAnime({int page = 1}) =>
+      _page(page: page, perPage: 10, sort: 'SCORE_DESC');
 
   Future<List<Title>> _page({
+    required int page,
     required int perPage,
     required String sort,
   }) async {
@@ -29,6 +33,7 @@ class AniListApi {
       body: {
         'query': AniListQueries.pageQuery,
         'variables': {
+          'page': page,
           'perPage': perPage,
           'sort': [sort],
         },

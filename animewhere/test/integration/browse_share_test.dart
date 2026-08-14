@@ -40,16 +40,20 @@ http.Client _mockApiClient() {
       if (path.contains('/seasons/now')) {
         return ok(fixture('jikan_seasons_now'));
       }
+      if (path.contains('/seasons/upcoming')) {
+        return ok(fixture('jikan_seasons_upcoming'));
+      }
     }
     if (host.contains('graphql.anilist')) {
       final body = jsonDecode(request.body) as Map<String, dynamic>;
       final query = body['query'] as String;
       if (query.contains('Media(id:')) return ok(fixture('anilist_media'));
-      return ok(fixture('anilist_page'));
+      if (query.contains('Page')) return ok(fixture('anilist_page'));
     }
     if (host.contains('kitsu')) {
       if (path.endsWith('/manga/5')) return ok(fixture('kitsu_manga_5'));
       if (path.contains('/manga')) return ok(fixture('kitsu_manga'));
+      if (path.contains('/edge/anime')) return ok(fixture('kitsu_anime'));
     }
     return http.Response('not found', 404);
   });

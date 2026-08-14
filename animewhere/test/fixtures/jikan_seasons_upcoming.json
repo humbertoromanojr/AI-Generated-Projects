@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "mal_id": 47595,
+      "url": "https://myanimelist.net/anime/47595/Chainsaw_Man",
+      "title": "Chainsaw Man",
+      "type": "TV",
+      "score": 8.43,
+      "year": 2022,
+      "season": "winter",
+      "images": {
+        "jpg": {
+          "large_image_url": "https://cdn.myanimelist.net/images/anime/1470/127520l.jpg"
+        }
+      }
+    },
+    {
+      "mal_id": 48018,
+      "url": "https://myanimelist.net/anime/48018/Chainsaw_Man_0",
+      "title": "Chainsaw Man 0",
+      "type": "TV",
+      "score": 8.17,
+      "year": 2022,
+      "season": "winter",
+      "images": {
+        "jpg": {
+          "large_image_url": "https://cdn.myanimelist.net/images/anime/1475/127623l.jpg"
+        }
+      }
+    },
+    {
+      "mal_id": 46713,
+      "url": "https://myanimelist.net/anime/46713/Glass_Lip",
+      "title": "Glass Lip",
+      "type": "TV",
+      "score": 7.8,
+      "year": 2022,
+      "season": "winter",
+      "images": {
+        "jpg": {
+          "large_image_url": "https://cdn.myanimelist.net/images/anime/1430/125135l.jpg"
+        }
+      }
+    }
+  ]
+}

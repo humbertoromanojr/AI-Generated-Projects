@@ -45,7 +45,7 @@ class KitsuTitleMapper {
     return Title(
       id: id,
       source: TitleSource.kitsu,
-      kind: TitleKind.manga,
+      kind: item['type'] == 'anime' ? TitleKind.anime : TitleKind.manga,
       title: canonicalTitle,
       imageUrl: imageUrl,
       description: attributes['synopsis'] as String?,
