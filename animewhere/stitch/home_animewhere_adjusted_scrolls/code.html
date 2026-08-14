@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AnimeWhere - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "outline-variant": "#414754",
+                "on-secondary-fixed": "#1a1c1c",
+                "on-secondary-container": "#b4b5b5",
+                "on-primary-container": "#00285d",
+                "inverse-on-surface": "#313030",
+                "on-surface-variant": "#c2c6d6",
+                "surface-container-high": "#2a2a2a",
+                "on-primary-fixed": "#001a41",
+                "surface-container-lowest": "#0e0e0e",
+                "on-primary-fixed-variant": "#004494",
+                "primary-container": "#4c8eff",
+                "error": "#ffb4ab",
+                "primary-fixed-dim": "#adc6ff",
+                "glass-tint": "rgba(255, 255, 255, 0.05)",
+                "on-secondary": "#2f3131",
+                "tertiary-fixed": "#ecdcff",
+                "primary-fixed": "#d8e2ff",
+                "surface-bright": "#3a3939",
+                "error-container": "#93000a",
+                "inverse-surface": "#e5e2e1",
+                "tertiary-container": "#a974ff",
+                "primary": "#adc6ff",
+                "secondary-fixed": "#e2e2e2",
+                "surface-container-low": "#1c1b1b",
+                "surface-dim": "#131313",
+                "secondary": "#c6c6c7",
+                "background": "#131313",
+                "outline": "#8c909f",
+                "on-tertiary-container": "#3a0079",
+                "on-tertiary-fixed": "#270057",
+                "on-tertiary": "#42008a",
+                "inverse-primary": "#005ac2",
+                "surface-deep": "#161616",
+                "on-error": "#690005",
+                "on-secondary-fixed-variant": "#454747",
+                "on-error-container": "#ffdad6",
+                "tertiary-fixed-dim": "#d5baff",
+                "on-surface": "#e5e2e1",
+                "on-background": "#e5e2e1",
+                "surface-container-highest": "#353534",
+                "on-tertiary-fixed-variant": "#5f00c0",
+                "tertiary": "#d5baff",
+                "secondary-container": "#454747",
+                "surface-tint": "#adc6ff",
+                "surface": "#131313",
+                "on-primary": "#002e69",
+                "secondary-fixed-dim": "#c6c6c7",
+                "surface-container": "#201f1f",
+                "surface-variant": "#353534"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "stack-xs": "0.25rem",
+                "stack-lg": "2.5rem",
+                "stack-md": "1rem",
+                "margin-desktop": "2rem",
+                "gutter": "1.5rem",
+                "container-max": "1280px",
+                "margin-mobile": "1rem",
+                "stack-sm": "0.5rem"
+        },
+        "fontFamily": {
+                "body-lg": [
+                        "Inter"
+                ],
+                "display": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24 md:pb-0 pt-16">
+<!-- TopAppBar -->
+<header class="bg-background/80 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-white/10 flex justify-between items-center px-margin-mobile h-16 md:px-margin-desktop">
+<button class="text-on-background hover:scale-105 transition-transform active:scale-95 duration-200 md:hidden flex items-center justify-center w-10 h-10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<h1 class="font-display text-display text-primary tracking-tighter text-2xl md:text-3xl">AnimeWhere</h1>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex gap-6">
+<a class="text-primary font-bold hover:scale-105 transition-transform active:scale-95 duration-200" href="#">Home</a>
+<a class="text-on-surface-variant hover:scale-105 transition-transform active:scale-95 duration-200" href="#">Jikan</a>
+<a class="text-on-surface-variant hover:scale-105 transition-transform active:scale-95 duration-200" href="#">AniList</a>
+<a class="text-on-surface-variant hover:scale-105 transition-transform active:scale-95 duration-200" href="#">Kitsu</a>
+<a class="text-on-surface-variant hover:scale-105 transition-transform active:scale-95 duration-200" href="#">Profile</a>
+</nav>
+<button class="text-on-background hover:scale-105 transition-transform active:scale-95 duration-200 flex items-center justify-center w-10 h-10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+</header>
+<main class="max-w-container-max mx-auto w-full py-8 space-y-16">
+<!-- Jikan Section -->
+<section>
+<div class="px-margin-mobile md:px-margin-desktop mb-4">
+<h2 class="font-display text-3xl md:text-4xl text-primary tracking-tight">Jikan</h2>
+</div>
+<!-- Hero Carousel (Smaller) -->
+<div class="relative w-full max-h-[800px] group cursor-pointer overflow-hidden h-[260px] md:h-[300px]">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, ultra-high-resolution poster of a generic dark fantasy anime protagonist, reminiscent of Solo Leveling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJd3ep3hdB1vGkYJD8f5LmqoCHaiuIfnFyw8bBlInZApx_AMd7Z-zE76AdLnadxWqOUdv69Diszr3bBcXs4K96DKjRPZDIm1UjWh6EiZSaZ2kN0NYdGEy8L86WhwRC5rvbmJ4kbQETUgMIpiBHh2p7STqYK985KFa27qWW_qdrMimMpuW9mDNXlcqhnuMulz1NKDlQbqNSSDX23Td7JU34Wdf_xDK7pWt0dTSqbnTiP5CrfBMlGUiMag"/>
+<div class="absolute inset-0 glass-overlay flex flex-col justify-end p-margin-mobile md:p-margin-desktop pb-4 md:pb-6"><button class="absolute top-4 right-4 bg-black/60 text-white p-2 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[20px]">share</span></button>
+<div class="flex gap-2 mb-2">
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-2 py-1 rounded">Action</span>
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-2 py-1 rounded">Fantasy</span>
+</div>
+<h2 class="font-display text-2xl md:text-3xl text-white mb-2 shadow-sm">Shadow Monarch</h2>
+<div class="flex gap-4">
+<button class="bg-white text-black font-label-md text-label-md px-4 py-2 rounded hover:scale-105 transition-transform active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                    Watch Now
+                </button>
+</div>
+</div>
+</div>
+<!-- News Section -->
+<div class="mt-stack-lg pl-margin-mobile md:pl-margin-desktop">
+<h3 class="font-headline-md text-headline-md text-on-background mb-stack-md">News</h3>
+<div class="flex overflow-x-auto gap-4 pb-4 no-scrollbar pr-margin-mobile md:pr-margin-desktop snap-x" dir="ltr">
+<div class="snap-start shrink-0 w-28 md:w-36 group cursor-pointer">
+<div class="relative aspect-square rounded-lg overflow-hidden bg-surface-container-low mb-2">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Neon Genesis cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ8rwbpGhs72kIMakJWv873OFc3qBWaN5Xw0mThQWP8tHIWGGeNBAJh7EZ4xM3kvibJIGBOa3G5AiyeksPpSXy4AnMlcsX7hJXeUX0JDLvTMMjUaDlWu6eFau44PMrBBtIQ9XU6I5cg5rQ-1WuWumK2TFEGGfWfJd5tvm8kWFrs2R4ekQZmit69V0pLIKON45FMq0OhUGTAJlwt7hUaXZo11diurN58GAyS6kf1FPCH2Tra9Zn-t7lzg"/>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+<button class="bg-white/20 border border-white/30 rounded-full p-2 backdrop-blur-md hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<button class="absolute top-2 right-2 bg-black/60 text-white p-1.5 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[18px]">share</span></button></div>
+<h4 class="font-label-md text-label-md text-white truncate">Neon Genesis: Echo</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate mt-1">Sci-Fi • Ep 12</p>
+</div>
+<div class="snap-start shrink-0 w-28 md:w-36 group cursor-pointer">
+<div class="relative aspect-square rounded-lg overflow-hidden bg-surface-container-low mb-2">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Blade cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4ubsJD07xE0NIMjuS8kxb5a6T1NtySI1WbfyWLuqYGFdTY2qab5SbHo5RtoREtR9EhsIaXQAnrIWCm-7sg-1mq6jLv5SOVhD2NEqu2QZUF7n5MKaZSpyth8b1qnNA3XXYb3_e0S5aSGlsDzPdtlK6it9NebIEOsAMYkTg-VXbuZBJ9qiZvrgrFuPPYSKT4XGgeso2ZjOsj6Xql2fDoR0X2ygP-erYkIm7ej9SQKTIYLFKmDaMspb50g"/>
+<button class="absolute top-2 right-2 bg-black/60 text-white p-1.5 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[18px]">share</span></button></div>
+<h4 class="font-label-md text-label-md text-white truncate">Blade of the Crescent</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate mt-1">Action • Ep 4</p>
+</div>
+<div class="snap-start shrink-0 w-28 md:w-36 group cursor-pointer">
+<div class="relative aspect-square rounded-lg overflow-hidden bg-surface-container-low mb-2">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Arcane cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzzKyR-YP034hoFgLjhbuZ8EnfzojDBXu15roKTPsDz8QmqRcgl2ie2-wGhTr-gPnMuL4vxQRmHEXbCl2lsAofkERxNvUfNtV2FzYbJyB0JX6m_g6Ysv6e8v6omtTtMHscBcz2sl-TALl-8yVANi5pJLWUI0owc_GLWkV2SOnxe8DIGJ7eQCMLzEb0-vXIjhnb2xa1A2JYUewQAM2oGvuTHvbwA9ZTaKG0C254LDiTfXThPs5i_tXyqQ"/>
+<button class="absolute top-2 right-2 bg-black/60 text-white p-1.5 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[18px]">share</span></button></div>
+<h4 class="font-label-md text-label-md text-white truncate">Arcane Scholar</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate mt-1">Fantasy • Ep 8</p>
+</div>
+</div>
+</div>
+<!-- Trending Section -->
+<div class="mt-stack-lg">
+<div class="flex justify-end items-end gap-4 px-margin-mobile md:px-margin-desktop mb-stack-md">
+<button class="font-label-sm text-label-sm text-primary hover:text-white transition-colors">See All</button>
+<h3 class="font-headline-md text-headline-md text-on-background">Trending</h3>
+</div>
+<div class="flex overflow-x-auto gap-4 pb-4 no-scrollbar px-margin-mobile md:px-margin-desktop snap-x" dir="rtl">
+<div class="snap-start shrink-0 w-28 md:w-36 group cursor-pointer flex flex-col" dir="ltr">
+<div class="relative aspect-square w-full rounded-lg overflow-hidden bg-surface-container-low mb-2">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIGrkCcBoWhFgVF4nm84HFpXH3MaMHj8EQOK1l-96lF8jHwzLoDHk8zO_D_Oi4jrLyyvJOVfbjotPYokyx7Fs6mKkiZTcRZW7kEh4OCSG1ivfD0FOHfSmEkbXZNPO08WfQfWlm8DrrQRoIXjp1iP8u01_Amw1WHDAnwBFuMYE-jLYub_SXJdBcjLHdeDcCC2MqqCVTwAo_po8gKiKQ6EPBBUe7s8nSZyhMfIrNsEBWRb_Tjk2rO6T1ug"/>
+<button class="absolute top-2 right-2 bg-black/60 text-white p-1.5 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[18px]">share</span></button></div>
+<h4 class="font-label-md text-label-md text-white truncate text-right">Berserker's Requiem</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate text-right mb-1">Dark Fantasy • Trending #1</p>
+<div class="flex items-center justify-end gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+</div>
+<div class="snap-start shrink-0 w-28 md:w-36 group cursor-pointer flex flex-col" dir="ltr">
+<div class="relative aspect-square w-full rounded-lg overflow-hidden bg-surface-container-low mb-2">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg0EuKDGsrrUyP1mv3r8Th6zM9TTO192o-iwD5OqSAsx_dbj19vXptJUTKDXQpzYSSWREDh45Sk5C0Bp6ju7l1XcFPDbBM3Lu1Rc99WT_dygxz1xjjxBgMmVF_kKMAgHEHQ49MDJk-eGsSrdR5icCnu2LHG-u6jpIiIAg29Tgc6DIzPmqT3H2vUV0ij8XzAsZRWo_Hu_nB7MlPQQ91C9xl7O-W0TW8KvqTk10pAQQp-GmicYixm38zuw"/>
+<button class="absolute top-2 right-2 bg-black/60 text-white p-1.5 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[18px]">share</span></button></div>
+<h4 class="font-label-md text-label-md text-white truncate text-right">Rainy Days in Tokyo</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate text-right mb-1">Slice of Life • Trending #2</p>
+<div class="flex items-center justify-end gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AniList Section -->
+<section>
+<div class="px-margin-mobile md:px-margin-desktop mb-4">
+<h2 class="font-display text-3xl md:text-4xl text-primary tracking-tight">AniList</h2>
+</div>
+<!-- Hero Carousel (Smaller) -->
+<div class="relative w-full max-h-[800px] group cursor-pointer overflow-hidden h-[260px] md:h-[300px]">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Another cinematic anime hero poster" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6CQD_nvs3PsFsei8ofCiTVhrpejrKEprKslfRZ4cK4MYiASUtHxx5s_hDQaFi4qGifGxOmS4Up-4BFrdLyUz1b1-5UFwzIr39jeYZb-GZ5DmX8Z7OLkpbnthToS6nRhZhags1cz3lQOPWkdKRU8DQmC-3N-pjBuzSu3lPnuB9VwqsMz5Bv0QNijTFT_EiALuQ_Kseg-yRG4os9FdHPOATEzZF2PpRfBpMYtmxcUjocL3rZduTOaBFiQ"/>
+<div class="absolute inset-0 glass-overlay flex flex-col justify-end p-margin-mobile md:p-margin-desktop pb-4 md:pb-6"><button class="absolute top-4 right-4 bg-black/60 text-white p-2 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[20px]">share</span></button>
+<div class="flex gap-2 mb-2">
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-2 py-1 rounded">Mecha</span>
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-2 py-1 rounded">Sci-Fi</span>
+</div>
+<h2 class="font-display text-2xl md:text-3xl text-white mb-2 shadow-sm">Iron Vanguard</h2>
+<div class="flex gap-4">
+<button class="bg-white text-black font-label-md text-label-md px-4 py-2 rounded hover:scale-105 transition-transform active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                    Watch Now
+                </button>
+</div>
+</div>
+</div>
+<!-- News Section -->
+<div class="mt-stack-lg pl-margin-mobile md:pl-margin-desktop">
+<h3 class="font-headline-md text-headline-md text-on-background mb-stack-md">News</h3>
+<div class="flex overflow-x-auto gap-4 pb-4 no-scrollbar pr-margin-mobile md:pr-margin-desktop snap-x" dir="ltr">
+<div class="snap-start shrink-0 w-28 md:w-36 group cursor-pointer">
+<div class="relative aspect-square rounded-lg overflow-hidden bg-surface-container-low mb-2">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4ubsJD07xE0NIMjuS8kxb5a6T1NtySI1WbfyWLuqYGFdTY2qab5SbHo5RtoREtR9EhsIaXQAnrIWCm-7sg-1mq6jLv5SOVhD2NEqu2QZUF7n5MKaZSpyth8b1qnNA3XXYb3_e0S5aSGlsDzPdtlK6it9NebIEOsAMYkTg-VXbuZBJ9qiZvrgrFuPPYSKT4XGgeso2ZjOsj6Xql2fDoR0X2ygP-erYkIm7ej9SQKTIYLFKmDaMspb50g"/>
+<button class="absolute top-2 right-2 bg-black/60 text-white p-1.5 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[18px]">share</span></button></div>
+<h4 class="font-label-md text-label-md text-white truncate">Blade of the Crescent</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate mt-1">Action • Ep 4</p>
+</div>
+<div class="snap-start shrink-0 w-28 md:w-36 group cursor-pointer">
+<div class="relative aspect-square rounded-lg overflow-hidden bg-surface-container-low mb-2">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ8rwbpGhs72kIMakJWv873OFc3qBWaN5Xw0mThQWP8tHIWGGeNBAJh7EZ4xM3kvibJIGBOa3G5AiyeksPpSXy4AnMlcsX7hJXeUX0JDLvTMMjUaDlWu6eFau44PMrBBtIQ9XU6I5cg5rQ-1WuWumK2TFEGGfWfJd5tvm8kWFrs2R4ekQZmit69V0pLIKON45FMq0OhUGTAJlwt7hUaXZo11diurN58GAyS6kf1FPCH2Tra9Zn-t7lzg"/>
+<button class="absolute top-2 right-2 bg-black/60 text-white p-1.5 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[18px]">share</span></button></div>
+<h4 class="font-label-md text-label-md text-white truncate">Neon Genesis: Echo</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate mt-1">Sci-Fi • Ep 12</p>
+</div>
+</div>
+</div>
+<!-- Trending Section -->
+<div class="mt-stack-lg">
+<div class="flex justify-end items-end gap-4 px-margin-mobile md:px-margin-desktop mb-stack-md">
+<button class="font-label-sm text-label-sm text-primary hover:text-white transition-colors">See All</button>
+<h3 class="font-headline-md text-headline-md text-on-background">Trending</h3>
+</div>
+<div class="flex overflow-x-auto gap-4 pb-4 no-scrollbar px-margin-mobile md:px-margin-desktop snap-x" dir="rtl">
+<div class="snap-start shrink-0 w-28 md:w-36 group cursor-pointer flex flex-col" dir="ltr">
+<div class="relative aspect-square w-full rounded-lg overflow-hidden bg-surface-container-low mb-2">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBssdJUkmH73cm_2v8o-JlD66Jwc0dSfGze_Tl2gmoRv1AX1mD-IMcVgNd0FLWiA-SRLljmBOvQ_zu0SaDNeN6PS0IBhGR1ICGMBjfrt2c6uyUsBHOhvdSTK9GTTQUkgyuf5yA5VQAW0yuRlyMBwRSoQy64gimiQvWbz3LWqQ3Xe2PJ-K6pl9AdCc78RedEMWaspJA7396bHk_BJcZPH9IyVN4sHmDeehPlcIFzMOLZz8BeHXHKMuapxQ"/>
+<button class="absolute top-2 right-2 bg-black/60 text-white p-1.5 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[18px]">share</span></button></div>
+<h4 class="font-label-md text-label-md text-white truncate text-right">Flight Path</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate text-right mb-1">Sports • Trending #1</p>
+<div class="flex items-center justify-end gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Kitsu Section -->
+<section>
+<div class="px-margin-mobile md:px-margin-desktop mb-4">
+<h2 class="font-display text-3xl md:text-4xl text-primary tracking-tight">Kitsu</h2>
+</div>
+<!-- Hero Carousel (Smaller) -->
+<div class="relative w-full max-h-[800px] group cursor-pointer overflow-hidden h-[260px] md:h-[300px]">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzzKyR-YP034hoFgLjhbuZ8EnfzojDBXu15roKTPsDz8QmqRcgl2ie2-wGhTr-gPnMuL4vxQRmHEXbCl2lsAofkERxNvUfNtV2FzYbJyB0JX6m_g6Ysv6e8v6omtTtMHscBcz2sl-TALl-8yVANi5pJLWUI0owc_GLWkV2SOnxe8DIGJ7eQCMLzEb0-vXIjhnb2xa1A2JYUewQAM2oGvuTHvbwA9ZTaKG0C254LDiTfXThPs5i_tXyqQ"/>
+<div class="absolute inset-0 glass-overlay flex flex-col justify-end p-margin-mobile md:p-margin-desktop pb-4 md:pb-6"><button class="absolute top-4 right-4 bg-black/60 text-white p-2 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[20px]">share</span></button>
+<div class="flex gap-2 mb-2">
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-2 py-1 rounded">Magic</span>
+<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-2 py-1 rounded">School</span>
+</div>
+<h2 class="font-display text-2xl md:text-3xl text-white mb-2 shadow-sm">Arcane Scholar</h2>
+<div class="flex gap-4">
+<button class="bg-white text-black font-label-md text-label-md px-4 py-2 rounded hover:scale-105 transition-transform active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                    Watch Now
+                </button>
+</div>
+</div>
+</div>
+<!-- News Section -->
+<div class="mt-stack-lg pl-margin-mobile md:pl-margin-desktop">
+<h3 class="font-headline-md text-headline-md text-on-background mb-stack-md">News</h3>
+<div class="flex overflow-x-auto gap-4 pb-4 no-scrollbar pr-margin-mobile md:pr-margin-desktop snap-x" dir="ltr">
+<div class="snap-start shrink-0 w-28 md:w-36 group cursor-pointer">
+<div class="relative aspect-square rounded-lg overflow-hidden bg-surface-container-low mb-2">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIGrkCcBoWhFgVF4nm84HFpXH3MaMHj8EQOK1l-96lF8jHwzLoDHk8zO_D_Oi4jrLyyvJOVfbjotPYokyx7Fs6mKkiZTcRZW7kEh4OCSG1ivfD0FOHfSmEkbXZNPO08WfQfWlm8DrrQRoIXjp1iP8u01_Amw1WHDAnwBFuMYE-jLYub_SXJdBcjLHdeDcCC2MqqCVTwAo_po8gKiKQ6EPBBUe7s8nSZyhMfIrNsEBWRb_Tjk2rO6T1ug"/>
+<button class="absolute top-2 right-2 bg-black/60 text-white p-1.5 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[18px]">share</span></button></div>
+<h4 class="font-label-md text-label-md text-white truncate">Berserker's Requiem</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate mt-1">Dark Fantasy • New Release</p>
+</div>
+</div>
+</div>
+<!-- Trending Section -->
+<div class="mt-stack-lg">
+<div class="flex justify-end items-end gap-4 px-margin-mobile md:px-margin-desktop mb-stack-md">
+<button class="font-label-sm text-label-sm text-primary hover:text-white transition-colors">See All</button>
+<h3 class="font-headline-md text-headline-md text-on-background">Trending</h3>
+</div>
+<div class="flex overflow-x-auto gap-4 pb-4 no-scrollbar px-margin-mobile md:px-margin-desktop snap-x" dir="rtl">
+<div class="snap-start shrink-0 w-28 md:w-36 group cursor-pointer flex flex-col" dir="ltr">
+<div class="relative aspect-square w-full rounded-lg overflow-hidden bg-surface-container-low mb-2">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ8rwbpGhs72kIMakJWv873OFc3qBWaN5Xw0mThQWP8tHIWGGeNBAJh7EZ4xM3kvibJIGBOa3G5AiyeksPpSXy4AnMlcsX7hJXeUX0JDLvTMMjUaDlWu6eFau44PMrBBtIQ9XU6I5cg5rQ-1WuWumK2TFEGGfWfJd5tvm8kWFrs2R4ekQZmit69V0pLIKON45FMq0OhUGTAJlwt7hUaXZo11diurN58GAyS6kf1FPCH2Tra9Zn-t7lzg"/>
+<button class="absolute top-2 right-2 bg-black/60 text-white p-1.5 rounded-full backdrop-blur-md hover:scale-110 transition-transform active:scale-95 flex items-center justify-center z-10"><span class="material-symbols-outlined text-[18px]">share</span></button></div>
+<h4 class="font-label-md text-label-md text-white truncate text-right">Neon Genesis: Echo</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate text-right mb-1">Sci-Fi • Trending #1</p>
+<div class="flex items-center justify-end gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden bg-background/80 backdrop-blur-xl fixed bottom-0 w-full z-50 border-t border-white/10 flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-primary font-bold active:scale-90 transition-all duration-150 hover:text-on-surface w-16" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-all duration-150 hover:text-on-surface w-16" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+<span class="font-label-sm text-label-sm">Jikan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-all duration-150 hover:text-on-surface w-16" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">list</span>
+<span class="font-label-sm text-label-sm">AniList</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-all duration-150 hover:text-on-surface w-16" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">explore</span>
+<span class="font-label-sm text-label-sm">Kitsu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-all duration-150 hover:text-on-surface w-16" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+</body></html>

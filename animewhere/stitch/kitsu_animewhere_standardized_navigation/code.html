@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kitsu Explore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "outline-variant": "#414754",
+                "on-secondary-fixed": "#1a1c1c",
+                "on-secondary-container": "#b4b5b5",
+                "on-primary-container": "#00285d",
+                "inverse-on-surface": "#313030",
+                "on-surface-variant": "#c2c6d6",
+                "surface-container-high": "#2a2a2a",
+                "on-primary-fixed": "#001a41",
+                "surface-container-lowest": "#0e0e0e",
+                "on-primary-fixed-variant": "#004494",
+                "primary-container": "#4c8eff",
+                "error": "#ffb4ab",
+                "primary-fixed-dim": "#adc6ff",
+                "glass-tint": "rgba(255, 255, 255, 0.05)",
+                "on-secondary": "#2f3131",
+                "tertiary-fixed": "#ecdcff",
+                "primary-fixed": "#d8e2ff",
+                "surface-bright": "#3a3939",
+                "error-container": "#93000a",
+                "inverse-surface": "#e5e2e1",
+                "tertiary-container": "#a974ff",
+                "primary": "#adc6ff",
+                "secondary-fixed": "#e2e2e2",
+                "surface-container-low": "#1c1b1b",
+                "surface-dim": "#131313",
+                "secondary": "#c6c6c7",
+                "background": "#131313",
+                "outline": "#8c909f",
+                "on-tertiary-container": "#3a0079",
+                "on-tertiary-fixed": "#270057",
+                "on-tertiary": "#42008a",
+                "inverse-primary": "#005ac2",
+                "surface-deep": "#161616",
+                "on-error": "#690005",
+                "on-secondary-fixed-variant": "#454747",
+                "on-error-container": "#ffdad6",
+                "tertiary-fixed-dim": "#d5baff",
+                "on-surface": "#e5e2e1",
+                "on-background": "#e5e2e1",
+                "surface-container-highest": "#353534",
+                "on-tertiary-fixed-variant": "#5f00c0",
+                "tertiary": "#d5baff",
+                "secondary-container": "#454747",
+                "surface-tint": "#adc6ff",
+                "surface": "#131313",
+                "on-primary": "#002e69",
+                "secondary-fixed-dim": "#c6c6c7",
+                "surface-container": "#201f1f",
+                "surface-variant": "#353534"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "stack-xs": "0.25rem",
+                "stack-lg": "2.5rem",
+                "stack-md": "1rem",
+                "margin-desktop": "2rem",
+                "gutter": "1.5rem",
+                "container-max": "1280px",
+                "margin-mobile": "1rem",
+                "stack-sm": "0.5rem"
+        },
+        "fontFamily": {
+                "body-lg": [
+                        "Inter"
+                ],
+                "display": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body { background-color: #131313; color: #e5e2e1; }
+        .glass-nav { background: rgba(19, 19, 19, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .anime-card-overlay { background: linear-gradient(to top, rgba(19,19,19,0.95) 0%, rgba(19,19,19,0) 100%); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="antialiased pb-32 md:pb-10 pt-20">
+<!-- TopAppBar (Hidden on Mobile) -->
+<header class="hidden md:flex fixed top-0 w-full z-50 border-b border-white/10 glass-nav justify-between items-center px-margin-desktop h-16">
+<div class="flex items-center gap-4">
+<button class="text-on-background hover:scale-105 transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-display text-headline-lg text-primary tracking-tighter">AnimeWhere</span>
+</div>
+<nav class="flex gap-8">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors" href="#">Home</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors" href="#">Jikan</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors" href="#">AniList</a>
+<a class="text-primary font-label-md text-label-md" href="#">Kitsu</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors" href="#">Profile</a>
+</nav>
+<button class="text-on-background hover:scale-105 transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</header>
+<!-- Mobile Top Header (Fallback for TopAppBar intent) -->
+<header class="md:hidden fixed top-0 w-full z-50 glass-nav border-b border-white/10 flex justify-between items-center px-margin-mobile h-16">
+<button class="text-on-background active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-display text-headline-lg-mobile text-primary tracking-tighter">AnimeWhere</span>
+<button class="text-on-background active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop space-y-12 mt-4 md:mt-8">
+<!-- Search & Filter Pills -->
+<section class="space-y-4">
+<div class="relative w-full max-w-2xl mx-auto">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border border-white/10 rounded-lg py-3 pl-12 pr-4 text-on-surface focus:outline-none focus:border-primary transition-colors font-body-md text-body-md" placeholder="Search anime, manga, users..." type="text"/>
+</div>
+<div class="flex gap-3 overflow-x-auto hide-scrollbar py-2">
+<button class="whitespace-nowrap px-4 py-1.5 rounded-lg bg-primary-container text-on-primary-container border border-primary font-label-md text-label-md">All</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-lg bg-surface-container border border-white/10 text-on-surface hover:bg-surface-container-high hover:border-primary/50 transition-colors font-label-md text-label-md">Action</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-lg bg-surface-container border border-white/10 text-on-surface hover:bg-surface-container-high hover:border-primary/50 transition-colors font-label-md text-label-md">Romance</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-lg bg-surface-container border border-white/10 text-on-surface hover:bg-surface-container-high hover:border-primary/50 transition-colors font-label-md text-label-md">Sci-Fi</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-lg bg-surface-container border border-white/10 text-on-surface hover:bg-surface-container-high hover:border-primary/50 transition-colors font-label-md text-label-md">Fantasy</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-lg bg-surface-container border border-white/10 text-on-surface hover:bg-surface-container-high hover:border-primary/50 transition-colors font-label-md text-label-md">Slice of Life</button>
+</div>
+</section>
+<!-- Featured / Trending Grid -->
+<section>
+<div class="flex gap-4 mb-stack-md border-b border-white/10 pb-2 overflow-x-auto no-scrollbar">
+<button class="font-label-md text-label-md text-primary border-b-2 border-primary px-2 pb-1">Mon</button>
+<button class="font-label-md text-label-md text-on-surface-variant px-2 pb-1 hover:text-on-surface transition-colors">Tue</button>
+<button class="font-label-md text-label-md text-on-surface-variant px-2 pb-1 hover:text-on-surface transition-colors">Wed</button>
+<button class="font-label-md text-label-md text-on-surface-variant px-2 pb-1 hover:text-on-surface transition-colors">Thu</button>
+<button class="font-label-md text-label-md text-on-surface-variant px-2 pb-1 hover:text-on-surface transition-colors">Fri</button>
+<button class="font-label-md text-label-md text-on-surface-variant px-2 pb-1 hover:text-on-surface transition-colors">Sat</button>
+<button class="font-label-md text-label-md text-on-surface-variant px-2 pb-1 hover:text-on-surface transition-colors">Sun</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+<!-- Card 1 -->
+<div class="group relative aspect-[2/3] rounded-lg overflow-hidden cursor-pointer bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A striking anime poster featuring a young protagonist with glowing blue eyes holding a futuristic glowing katana, set against a dark cyberpunk city skyline. The lighting is cinematic, highlighting the neon reflections on the sword. The art style is high-end, modern anime aesthetic matching an Obsidian Clarity theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL5sCItN16VYiXBZeuQYWEs4FFEz3_lor4QaNcK4THyAEAOpzoIQPx4006NwlyTIfz5mh5vlVuLPe6xJRi2DiayBHDb_WqtLtS0uIQw8nYHjoBPQ70RUNWtcvFbnjxC6X2G8EMiHL4IV9AP7h9Er1cbkAM89Mg99kt809XMfiFj2i9eUEjKuXSa5mdWOEVHJrjNxdSPsmrYFxSJIfVXxeX7IfKqvOesiEyPIaEsEdd5-Y6CC7d0GYLFg"/>
+<div class="absolute inset-0 anime-card-overlay flex flex-col justify-end p-3 md:p-4 opacity-100 transition-opacity duration-300">
+<span class="bg-primary-container text-on-primary-container text-xs px-2 py-0.5 rounded-lg w-fit mb-2 font-label-sm border border-primary/20">Action</span>
+<h3 class="font-headline-md text-body-md md:text-body-lg text-white font-semibold line-clamp-2">Neon Genesis: Rebirth</h3>
+</div>
+<!-- Desktop Hover Quick Add -->
+<div class="hidden md:flex absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center">
+<button class="bg-white text-black px-4 py-2 rounded-lg font-label-md text-label-md hover:scale-105 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span> Add to List
+                        </button>
+</div>
+<button class="absolute top-2 right-2 z-10 p-2 rounded-full bg-black/40 backdrop-blur-sm text-white group-hover:opacity-100 transition-opacity duration-300 hover:bg-primary hover:text-on-primary-container active:scale-95">
+<span class="material-symbols-outlined text-sm">share</span>
+</button></div>
+<!-- Card 2 -->
+<div class="group relative aspect-[2/3] rounded-lg overflow-hidden cursor-pointer bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An atmospheric anime poster showing two figures standing beneath a massive glowing ethereal tree in a dark enchanted forest. Deep navy and bioluminescent blue colors dominate. The visual style is premium otaku, dark fantasy aesthetic, perfect for a sleek streaming interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2UV6fK9DYBde164ocVAiLssRO1CgZ2iypyMH_Dm-CD0TZGYWm-YhtQTJhVGxW30hL7K9GDmR_zG-8DhK3Ef1axal-c3dw5Z06Q4bwjGK3xrKsnsWV_h8cMl9DqeQdJ0r-BtwxrsJcqAu0j33HwPZvTX7hsO6pNvmJV9d_9gkV_eKNLQEodBtQmwDEj4FgHkcIoQ3Ig2O5mJbbb5aGMhQi9iD86gEOmKUKpjQr6UvjXQ7i_r9IjURQ3A"/>
+<div class="absolute inset-0 anime-card-overlay flex flex-col justify-end p-3 md:p-4 opacity-100 transition-opacity duration-300">
+<span class="bg-primary-container text-on-primary-container text-xs px-2 py-0.5 rounded-lg w-fit mb-2 font-label-sm border border-primary/20">Fantasy</span>
+<h3 class="font-headline-md text-body-md md:text-body-lg text-white font-semibold line-clamp-2">Echoes of the World Tree</h3>
+</div>
+<div class="hidden md:flex absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center">
+<button class="bg-white text-black px-4 py-2 rounded-lg font-label-md text-label-md hover:scale-105 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span> Add to List
+                        </button>
+</div>
+<button class="absolute top-2 right-2 z-10 p-2 rounded-full bg-black/40 backdrop-blur-sm text-white group-hover:opacity-100 transition-opacity duration-300 hover:bg-primary hover:text-on-primary-container active:scale-95">
+<span class="material-symbols-outlined text-sm">share</span>
+</button></div>
+<!-- Card 3 -->
+<div class="group relative aspect-[2/3] rounded-lg overflow-hidden cursor-pointer bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A dramatic anime illustration of a mecha unit partially silhouetted against a blood-red moon in a destroyed urban landscape. The overall tone is gritty and cinematic, fitting a deep dark minimalist UI design. Sharp contrasts between black shadows and glowing red elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALy2aJNYr5Ljin5noIy1x9Y3K_pJGz4K6LuqDhTvc5YvijKLqimhJSs247G64SPmt2iartlFuw9o2gyfwB5yfRWpXcWjExYPCuQiUs5YhYei_M_XBrQXWA1YUp3TPNNDtgG49XShWTsbu03UyOAMYrvV1DS4DeIIXnMdFrDYKgi8fZJm7jsDFn1UFk-APzl4j7QqPcDnlrz8_Roh6uCZZdc4GTdaljWDFpZ8LqiNYHIk5Enub-DZIWeA"/>
+<div class="absolute inset-0 anime-card-overlay flex flex-col justify-end p-3 md:p-4 opacity-100 transition-opacity duration-300">
+<span class="bg-primary-container text-on-primary-container text-xs px-2 py-0.5 rounded-lg w-fit mb-2 font-label-sm border border-primary/20">Sci-Fi</span>
+<h3 class="font-headline-md text-body-md md:text-body-lg text-white font-semibold line-clamp-2">Iron Bastion 04</h3>
+</div>
+<div class="hidden md:flex absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center">
+<button class="bg-white text-black px-4 py-2 rounded-lg font-label-md text-label-md hover:scale-105 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span> Add to List
+                        </button>
+</div>
+<button class="absolute top-2 right-2 z-10 p-2 rounded-full bg-black/40 backdrop-blur-sm text-white group-hover:opacity-100 transition-opacity duration-300 hover:bg-primary hover:text-on-primary-container active:scale-95">
+<span class="material-symbols-outlined text-sm">share</span>
+</button></div>
+<!-- Card 4 -->
+<div class="group relative aspect-[2/3] rounded-lg overflow-hidden cursor-pointer bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A serene anime key visual showing a high school student sitting on a train looking out the window at a sunset over the ocean. The colors are muted pastels blending into dark blues, creating a nostalgic and calm mood. The image looks polished and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3K4UDlHZgPPMK5KNAEEauykhBvy5egGBkEA57EeTzn8cOhqyJxkB2hB9eXTtYsYSn2NZ9KQIMTEadhJLxgnvH-FdehyG2vlaxu6-s7ZM168lkFGqoHHobvy-IV_DWn7pxxScSTQzTicmSiREZX1cYa_VkR-pbaSpt77Q3Co4CQ0hQAJNxkXXRT1eVvm4tZGGjURCnk8xA4jyXCzI3XRqBwMD0IUGmYPz98ljQiqsW-BwSw74MePW5wQ"/>
+<div class="absolute inset-0 anime-card-overlay flex flex-col justify-end p-3 md:p-4 opacity-100 transition-opacity duration-300">
+<span class="bg-primary-container text-on-primary-container text-xs px-2 py-0.5 rounded-lg w-fit mb-2 font-label-sm border border-primary/20">Slice of Life</span>
+<h3 class="font-headline-md text-body-md md:text-body-lg text-white font-semibold line-clamp-2">Train to Nowhere</h3>
+</div>
+<div class="hidden md:flex absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center">
+<button class="bg-white text-black px-4 py-2 rounded-lg font-label-md text-label-md hover:scale-105 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span> Add to List
+                        </button>
+</div>
+<button class="absolute top-2 right-2 z-10 p-2 rounded-full bg-black/40 backdrop-blur-sm text-white group-hover:opacity-100 transition-opacity duration-300 hover:bg-primary hover:text-on-primary-container active:scale-95">
+<span class="material-symbols-outlined text-sm">share</span>
+</button></div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 glass-nav border-t border-white/10 flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-90 transition-all duration-150 gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-90 transition-all duration-150 gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-sm text-label-sm">Jikan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-90 transition-all duration-150 gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="list">list</span>
+<span class="font-label-sm text-label-sm">AniList</span>
+</a>
+<!-- Active Tab -->
+<a class="flex flex-col items-center justify-center text-primary font-bold active:scale-90 transition-all duration-150 gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="explore" data-weight="fill" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm">Kitsu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-90 transition-all duration-150 gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+</body></html>
