@@ -77,6 +77,10 @@ MUST map its tokens exactly to the Flutter theme:
   specified, not through shadows.
 - A feature screen MUST NOT be merged if it visibly deviates from the
   corresponding `/stitch` mockup.
+- The app will have three sections on the Home screen,
+  and they should be separated on the Home screen with the following titles: jikan, anilist, and kitsu. Jikan: will feature a carousel, followed by two image scrolls following the recommendations; Anilist: will feature a carousel, followed by two image scrolls following the recommendations; Kitsu: will have the carousel, followed by two scrollable sections with images based on the recommendations
+
+All carousels should load only 10 images at a time to avoid exceeding the request limit, and the scrollable sections will be infinite, displaying 10 images at a time
 
 Rationale: The design system encodes a deliberate "Vivid Midnight" brand.
 Visual consistency is a core product promise, so screen pixels must be
