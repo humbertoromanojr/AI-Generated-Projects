@@ -10,6 +10,11 @@ class KitsuApi {
 
   static const String baseUrl = 'https://kitsu.io/api/edge';
 
+  static const Map<String, String> _kitsuHeaders = {
+    'User-Agent': 'AnimeWhere/1.0 (https://animewhere.app)',
+    'Accept': 'application/vnd.api+json',
+  };
+
   final AppHttpClient _httpClient;
   final KitsuTitleMapper _mapper;
 
@@ -21,7 +26,7 @@ class KitsuApi {
         'page[offset]': '${page * 10}',
       },
     );
-    final body = await _httpClient.getJson(uri);
+    final body = await _httpClient.getJson(uri, headers: _kitsuHeaders);
     return _mapper.mapList(body);
   }
 
@@ -33,16 +38,29 @@ class KitsuApi {
         'page[offset]': '${page * 10}',
       },
     );
-    final body = await _httpClient.getJson(uri);
+    final body = await _httpClient.getJson(uri, headers: _kitsuHeaders);
     return _mapper.mapList(body);
   }
 
   Future<Title> detail(String id) async {
-    final body = await _httpClient.getJson(Uri.parse('$baseUrl/manga/$id'));
-    final title = _mapper.mapDetail(body);
+    final title =
+        await _fetchDetail(id, 'anime') ?? await _fetchDetail(id, 'manga');
     if (title == null) {
       throw const ParseError('Kitsu detail did not yield a valid title');
     }
     return title;
+  }
+
+  Future<Title?> _fetchDetail(String id, String type) async {
+    try {
+      final body = await _httpClient.getJson(
+        Uri.parse('$baseUrl/$type/$id'),
+        headers: _kitsuHeaders,
+      );
+      return _mapper.mapDetail(body);
+    } on HttpError catch (error) {
+      if (error.statusCode == 404) return null;
+      rethrow;
+    }
   }
 }

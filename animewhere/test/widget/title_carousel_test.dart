@@ -57,28 +57,27 @@ void main() {
     },
   );
 
-  testWidgets(
-    'pauses auto-slide during interaction and resumes after idle',
-    (tester) async {
-      await tester.pumpWidget(carousel(List.generate(5, title)));
-      await tester.pump();
+  testWidgets('pauses auto-slide during interaction and resumes after idle', (
+    tester,
+  ) async {
+    await tester.pumpWidget(carousel(List.generate(5, title)));
+    await tester.pump();
 
-      await tester.tap(find.byType(PageView));
-      await tester.pump();
+    await tester.tap(find.byType(PageView));
+    await tester.pump();
 
-      expect(find.text('1 / 5'), findsOneWidget);
+    expect(find.text('1 / 5'), findsOneWidget);
 
-      await tester.pump(
-        CarouselConfig.autoSlideInterval - const Duration(seconds: 1),
-      );
-      await tester.pumpAndSettle();
+    await tester.pump(
+      CarouselConfig.autoSlideInterval - const Duration(seconds: 1),
+    );
+    await tester.pumpAndSettle();
 
-      expect(find.text('1 / 5'), findsOneWidget);
+    expect(find.text('1 / 5'), findsOneWidget);
 
-      await tester.pump(const Duration(seconds: 1));
-      await tester.pumpAndSettle();
+    await tester.pump(const Duration(seconds: 1));
+    await tester.pumpAndSettle();
 
-      expect(find.text('2 / 5'), findsOneWidget);
-    },
-  );
+    expect(find.text('2 / 5'), findsOneWidget);
+  });
 }

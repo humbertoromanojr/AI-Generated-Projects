@@ -66,14 +66,21 @@ The home carousel auto-slide, Kitsu Edge API integration, AW launcher
 label/icon, and stitch layout are validated per
 [quickstart](specs/003-home-carousel-config/quickstart.md), with results in
 [validation-results.md](specs/003-home-carousel-config/validation-results.md).
+The Kitsu section headers (`User-Agent`, JSON:API `Accept`) and
+anime/manga detail routing are validated per
+[quickstart](specs/004-kitsu-search-share/quickstart.md), along with the
+share branding (app image, "AW - AnimeWhere" name, download link); results are
+recorded in
+[validation-results.md](specs/004-kitsu-search-share/validation-results.md).
 
 ## App branding
 
 The launcher label is **AW** on Android (`android:label`) and iOS
 (`CFBundleDisplayName`); the launcher icon is generated from
 `assets/icons/animeWhere.png` (see `flutter_launcher_icons` in
-`pubspec.yaml`). The in-app brand and web share preview keep the
-"AnimeWhere" name.
+`pubspec.yaml`). The in-app brand is "AW - AnimeWhere"; shared content and the
+web share preview show the app image, the "AW - AnimeWhere" name, and a
+download link.
 
 ## Project structure
 

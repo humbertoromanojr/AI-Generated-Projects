@@ -52,5 +52,42 @@ void main() {
         'https://animewhere.app/title/kitsu/5',
       );
     });
+
+    test('carries the branded app name on every target', () {
+      final repo = ShareRepository();
+
+      expect(
+        repo.targetFor(titleWith(TitleSource.jikan, '1')).appName,
+        'AW - AnimeWhere',
+      );
+      expect(
+        repo.targetFor(titleWith(TitleSource.kitsu, '2')).appName,
+        'AW - AnimeWhere',
+      );
+    });
+
+    test('carries an app image URL on every target', () {
+      final repo = ShareRepository(webHost: 'https://animewhere.app');
+
+      final target = repo.targetFor(titleWith(TitleSource.anilist, '21'));
+
+      expect(target.appImageUrl, isNotEmpty);
+    });
+
+    test('downloadUrl points to the web host download page', () {
+      final repo = ShareRepository(webHost: 'https://animewhere.app');
+
+      final target = repo.targetFor(titleWith(TitleSource.jikan, '5114'));
+
+      expect(target.downloadUrl, 'https://animewhere.app/download');
+    });
+
+    test('downloadUrl follows the configured web host', () {
+      final repo = ShareRepository(webHost: 'https://staging.animewhere.app');
+
+      final target = repo.targetFor(titleWith(TitleSource.kitsu, '42'));
+
+      expect(target.downloadUrl, 'https://staging.animewhere.app/download');
+    });
   });
 }
