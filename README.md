@@ -95,6 +95,43 @@ All the projects I'm working on will be done using the Opencode IDE, because it'
 - You have to register with TMDB to get your API_KEY so you can use the API in your machine's app: `https://www.themoviedb.org`
 
 <hr size="10" color="yellow" />
+📉
+<hr size="10" color="yellow" />
+
+## AnimeWhere Project 🥇
+
+- This project was built entirely with AI, using SDD (Spec-Driven Development). It’s an app for displaying anime and manga images; I used three free, publicly available APIs to build it.
+  <br /><br />
+
+## Demonstration
+
+<div align="center">
+  <img src="https://drive.google.com/uc?export=view&id=" alt="" width="100%" border="0" />
+</div>
+<br />
+
+## Languages
+
+- <img src="https://img.shields.io/badge/DART-239120?style=for-the-badge&logo=dart&logoColor=white" width="10%" border="0" />
+
+## Libraries
+
+- <img src="https://img.shields.io/badge/flutter-20232A?style=for-the-badge&logo=flutter&logoColor=61DAFB" /> — It is an open-source AI coding assistant. It is available as a terminal-based interface, a desktop application, or an IDE extension.
+  <br /><br />
+
+- [Flutter](https://flutter.dev)
+
+## Sources
+
+API documentation: <br />
+
+- https://docs.api.jikan.moe <br />
+- https://docs.anilist.co <br />
+- https://kitsu.docs.apiary.io <br />
+
+<hr align="center" size="10" color="yellow">
+▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
+</hr>
 
 ## License
 
