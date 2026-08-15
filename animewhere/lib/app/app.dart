@@ -27,6 +27,7 @@ class AnimeWhereApp extends StatelessWidget {
         title: 'AnimeWhere',
         theme: AppTheme.themeData,
         routerConfig: AppRouter.router,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

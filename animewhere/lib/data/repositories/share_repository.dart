@@ -1,3 +1,5 @@
+import 'package:animewhere/core/config/share_config.dart';
+import 'package:animewhere/core/models/share_link.dart';
 import 'package:animewhere/core/models/share_target.dart';
 import 'package:animewhere/core/models/title.dart';
 
@@ -14,10 +16,16 @@ class ShareRepository {
     return ShareTarget(
       source: title.source,
       id: title.id,
-      shareUrl: '$webHost/title/${title.source.name}/${title.id}',
+      shareUrl: canonicalShareLink(
+        source: title.source,
+        kind: title.kind,
+        id: title.id,
+      ),
+      titleName: title.title,
+      imageUrl: title.imageUrl,
       appName: appName,
       appImageUrl: '$webHost/$_appImagePath',
-      downloadUrl: '$webHost/download',
+      downloadUrl: ShareConfig.playStoreDownloadUrl(),
     );
   }
 }

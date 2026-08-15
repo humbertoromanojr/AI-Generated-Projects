@@ -23,8 +23,10 @@ import 'package:animewhere/ui/share/share_service.dart';
 String fixture(String name) =>
     File('test/fixtures/$name.json').readAsStringSync();
 
-http.Client _mockApiClient() {
+http.Client _mockApiClient(List<String> apiCalls) {
   return MockClient((request) async {
+    apiCalls.add('${request.method} ${request.url}');
+
     http.Response ok(String body) => http.Response(
       body,
       200,
@@ -79,7 +81,8 @@ void main() {
     addTearDown(tester.view.reset);
 
     final shareService = _RecordingShareService();
-    final httpClient = AppHttpClient(inner: _mockApiClient());
+    final apiCalls = <String>[];
+    final httpClient = AppHttpClient(inner: _mockApiClient(apiCalls));
     final homeViewModel = HomeViewModel(
       repository: CatalogRepository(
         jikanApi: JikanApi(httpClient: httpClient),
@@ -120,9 +123,16 @@ void main() {
     expect(find.text('Score 87.1'), findsOneWidget);
     expect(find.text('TV'), findsOneWidget);
 
+    final callsBeforeShare = apiCalls.length;
+
     await tester.tap(find.text('Share'));
     await tester.pumpAndSettle();
 
-    expect(shareService.sharedUrls, ['https://animewhere.app/title/jikan/21']);
+    expect(shareService.sharedUrls, ['https://myanimelist.net/anime/21']);
+    expect(
+      apiCalls.length,
+      callsBeforeShare,
+      reason: 'sharing must not issue provider requests',
+    );
   });
 }
