@@ -28,10 +28,10 @@ When a user shares a title from any source (Jikan, AniList, or Kitsu), the link 
 
 **Acceptance Scenarios**:
 
-1. **Given** a Jikan anime title, **When** the user shares it, **Then** the shared link uses the correct Jikan format for a specific anime and opens the correct title.
-2. **Given** a Jikan manga title, **When** the user shares it, **Then** the shared link uses the correct Jikan manga format and opens the correct title.
-3. **Given** an AniList anime title, **When** the user shares it, **Then** the shared link uses the correct AniList format and opens the correct title.
-4. **Given** a Kitsu anime title, **When** the user shares it, **Then** the shared link uses the correct Kitsu format and opens the correct title.
+1. **Given** a Jikan anime title, **When** the user shares it, **Then** the shared link is `https://myanimelist.net/anime/{mal_id}` and opens the correct title.
+2. **Given** a Jikan manga title, **When** the user shares it, **Then** the shared link is `https://myanimelist.net/manga/{mal_id}` and opens the correct title.
+3. **Given** an AniList anime title, **When** the user shares it, **Then** the shared link is `https://anilist.co/anime/{id}` and opens the correct title.
+4. **Given** a Kitsu anime title, **When** the user shares it, **Then** the shared link is `https://kitsu.io/anime/{id}` and opens the correct title.
 5. **Given** any title, **When** it is shared, **Then** the shared content never contains a link of the form `https://animewhere.app/title/<source>/<id>`.
 
 ---
@@ -48,7 +48,7 @@ When a user shares a title, the shared content displays, in order: the title's i
 
 1. **Given** any title, **When** the user shares it, **Then** the shared content displays the title's image first.
 2. **Given** any title, **When** the user shares it, **Then** the title name appears after the image.
-3. **Given** any title, **When** the user shares it, **Then** the shared content ends with "Download the app" and the app name "AW - AnimeWhere", including a link that leads to where the app can be obtained.
+3. **Given** any title, **When** the user shares it, **Then** the shared content ends with a "Download the app from the Google Play Store" call-to-action, the app name "AW - AnimeWhere", and a link to the app's Google Play Store listing.
 4. **Given** a title from each source, **When** the image and name are retrieved for sharing, **Then** the source's correct format is used (Jikan detail endpoint, AniList GraphQL media query, Kitsu detail with categories/episodes) without exceeding the source's request limits (Jikan 3 requests/second, AniList 90 requests/minute).
 
 ---
@@ -66,9 +66,9 @@ When a user shares a title, the shared content displays, in order: the title's i
 
 ### Functional Requirements
 
-- **FR-001**: The share link for a title MUST use the correct format for the source the title came from. Jikan titles use the Jikan-specific format for a specific anime (`https://api.jikan.moe/v4/anime/{id}`) / manga, AniList titles use the AniList format for a specific media entry, and Kitsu titles use the Kitsu detail format (`https://kitsu.io/api/edge/anime/{id}?include=categories,episodes`). [NEEDS CLARIFICATION: The description lists each provider's API endpoint format but does not state which URL a shared link should point to. Confirm whether the shared link should be (A) the provider's canonical web page, (B) the provider's API endpoint exactly as written in the description, or (C) another destination.]
+- **FR-001**: The share link for a title MUST be the provider's canonical web page for that title: Jikan (MyAnimeList) anime titles use `https://myanimelist.net/anime/{mal_id}` and manga titles use `https://myanimelist.net/manga/{mal_id}`; AniList titles use `https://anilist.co/anime/{id}` and `https://anilist.co/manga/{id}`; Kitsu titles use `https://kitsu.io/anime/{id}` and `https://kitsu.io/manga/{id}`.
 - **FR-002**: Shared content MUST NOT contain the app's own URL of the form `https://animewhere.app/title/<source>/<id>`.
-- **FR-003**: Shared content MUST display, in order: the title's image, the title name, and a "Download the app" call-to-action with the app name "AW - AnimeWhere" and a link to where the app can be obtained.
+- **FR-003**: Shared content MUST display, in order: the title's image, the title name, and a "Download the app from the Google Play Store" call-to-action with the app name "AW - AnimeWhere" and a link to the app's Google Play Store listing.
 - **FR-004**: The title's image and name MUST be retrieved using the correct format for the source (Jikan detail, AniList GraphQL, Kitsu detail with categories/episodes), without exceeding the source's request limits (Jikan 3 requests/second, AniList 90 requests/minute).
 - **FR-005**: For manga titles, the share link MUST use the manga variant of the source's format.
 - **FR-006**: A title without a poster image MUST still produce valid shared content containing the correct link, the title name, and the app download call-to-action.
@@ -91,8 +91,9 @@ When a user shares a title, the shared content displays, in order: the title's i
 
 ## Assumptions
 
-- The correct per-source link formats follow the destination confirmed in Q1 (pending clarification); the description's API endpoint examples are the reference.
+- The correct per-source link formats point to each provider's canonical web page: MyAnimeList for Jikan titles (Jikan is the MyAnimeList API), anilist.co for AniList titles, and kitsu.io for Kitsu titles, with dedicated manga variants. The providers' API endpoints (per the description) are used only to retrieve the title's image and name when building the share.
 - The app's own `/title/:source/:id` route remains available for in-app navigation and the existing web share-preview page, but it is no longer emitted in shared content.
-- The share layout is exactly: title image, title name, then "Download the app" with the app name "AW - AnimeWhere".
+- The share layout is exactly: title image, title name, then "Download the app from the Google Play Store" with the app name "AW - AnimeWhere".
+- The app download link points to the app's Google Play Store listing (`https://play.google.com/store/apps/details?id=<applicationId>`); the application id is a configuration constant derived from the Android app id.
 - Sharing embeds the title image where the platform's share mechanism supports it; where it does not, the text fallback still carries the correct link, the title name, and the app download call-to-action.
 - The existing share flow built in features 001-004 remains the foundation; this feature corrects the link format and the share content structure.
