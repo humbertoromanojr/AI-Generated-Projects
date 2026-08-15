@@ -77,9 +77,7 @@ void main() {
               'attributes': {
                 'canonicalTitle': 'Numeric Rating',
                 'averageRating': 82,
-                'posterImage': {
-                  'original': 'https://example.com/a.jpg',
-                },
+                'posterImage': {'original': 'https://example.com/a.jpg'},
               },
             },
           ],

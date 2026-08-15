@@ -6,6 +6,42 @@ import 'package:animewhere/core/network/http_client.dart';
 import 'package:animewhere/data/sources/kitsu/kitsu_api.dart';
 
 void main() {
+  group('KitsuApi request headers', () {
+    test('sends a User-Agent and JSON:API Accept header', () async {
+      http.Request? captured;
+      final api = KitsuApi(
+        httpClient: AppHttpClient(
+          inner: MockClient((request) async {
+            captured = request;
+            return http.Response('{"data": []}', 200);
+          }),
+        ),
+      );
+
+      await api.manga();
+
+      expect(captured!.headers['User-Agent'], isNotEmpty);
+      expect(captured!.headers['Accept'], 'application/vnd.api+json');
+    });
+
+    test('sends the headers for the anime endpoint too', () async {
+      http.Request? captured;
+      final api = KitsuApi(
+        httpClient: AppHttpClient(
+          inner: MockClient((request) async {
+            captured = request;
+            return http.Response('{"data": []}', 200);
+          }),
+        ),
+      );
+
+      await api.anime(page: 1);
+
+      expect(captured!.headers['User-Agent'], isNotEmpty);
+      expect(captured!.headers['Accept'], 'application/vnd.api+json');
+    });
+  });
+
   group('KitsuApi pagination', () {
     test('manga maps page to page[offset] and keeps page[limit]=10', () async {
       Uri? captured;

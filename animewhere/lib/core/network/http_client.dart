@@ -18,9 +18,13 @@ class AppHttpClient {
   final http.Client _inner;
   final Duration timeout;
 
-  Future<String> getJson(Uri uri) async {
+  Future<String> getJson(
+    Uri uri, {
+    Map<String, String> headers = const {},
+  }) async {
+    final mergedHeaders = {..._jsonHeaders, ...headers};
     final response = await _guard(
-      () => _inner.get(uri, headers: _jsonHeaders).timeout(timeout),
+      () => _inner.get(uri, headers: mergedHeaders).timeout(timeout),
     );
     return response.body;
   }

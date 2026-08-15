@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart' hide Title;
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:animewhere/core/models/title.dart';
 import 'package:animewhere/core/models/title_source.dart';
 import 'package:animewhere/core/network/network_error.dart';
@@ -56,7 +55,7 @@ SharePreviewViewModel _vm({_FakeJikanApi? jikan}) {
 }
 
 void main() {
-  testWidgets('renders the 2:3 poster with "AnimeWhere" below it', (
+  testWidgets('renders the 2:3 poster with app branding below it', (
     WidgetTester tester,
   ) async {
     final vm = _vm(jikan: _FakeJikanApi(result: sampleTitle()));
@@ -72,8 +71,8 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('AnimeWhere'), findsOneWidget);
-    expect(find.byType(CachedNetworkImage), findsOneWidget);
+    expect(find.text('AW - AnimeWhere'), findsOneWidget);
+    expect(find.byType(CachedNetworkImage), findsWidgets);
     expect(
       find.byWidgetPredicate(
         (widget) => widget is AspectRatio && widget.aspectRatio == 2 / 3,
@@ -101,5 +100,62 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Retry'), findsOneWidget);
+  });
+
+  testWidgets('renders the app branding name on the share preview', (
+    WidgetTester tester,
+  ) async {
+    final vm = _vm(jikan: _FakeJikanApi(result: sampleTitle()));
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: SharePreviewView(
+          source: TitleSource.jikan,
+          id: '21',
+          viewModel: vm,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('AW - AnimeWhere'), findsOneWidget);
+  });
+
+  testWidgets('renders a download link on the share preview', (
+    WidgetTester tester,
+  ) async {
+    final vm = _vm(jikan: _FakeJikanApi(result: sampleTitle()));
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: SharePreviewView(
+          source: TitleSource.jikan,
+          id: '21',
+          viewModel: vm,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Download the app'), findsOneWidget);
+  });
+
+  testWidgets('renders an app branding image on the share preview', (
+    WidgetTester tester,
+  ) async {
+    final vm = _vm(jikan: _FakeJikanApi(result: sampleTitle()));
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: SharePreviewView(
+          source: TitleSource.jikan,
+          id: '21',
+          viewModel: vm,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(const Key('app-branding-image')), findsOneWidget);
   });
 }
