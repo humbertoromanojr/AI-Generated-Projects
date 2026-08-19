@@ -110,7 +110,7 @@ All the projects I'm working on will be done using the Opencode IDE, because it'
 ## Demonstration
 
 <div align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1zSClDe4SgXCt-R0L7AmiDXyl1H3FSzGB" alt="" width="100%" border="0" />
+  <img src="https://drive.google.com/uc?export=view&id=1YV33AC-fXbFSk6lyj2hWYr7gIQWeOWfV" alt="" width="100%" border="0" />
 </div>
 <br />
 
