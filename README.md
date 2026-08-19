@@ -60,7 +60,7 @@ All the projects I'm working on will be done using the Opencode IDE, because it'
 
 <hr size="10" color="yellow" />
 <div align="center">
-▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
+▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
 </div>
 <hr size="10" color="yellow" />
 
@@ -98,7 +98,7 @@ All the projects I'm working on will be done using the Opencode IDE, because it'
 
 <hr size="10" color="yellow" />
 <div align="center">
-▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
+▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
 </div>
 <hr size="10" color="yellow" />
 
@@ -135,7 +135,7 @@ API documentation: <br />
 
 <hr size="10" color="yellow" />
 <div align="center">
-▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
+▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
 </div>
 <hr size="10" color="yellow" />
 
