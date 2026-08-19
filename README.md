@@ -58,9 +58,11 @@ All the projects I'm working on will be done using the Opencode IDE, because it'
 
 - [Opencode](https://opencode.ai)
 
+<hr size="10" color="yellow" />
 <div align="center">
-▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
+▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
 </div>
+<hr size="10" color="yellow" />
 
 ## FluttMov Project 🥇
 
@@ -94,9 +96,11 @@ All the projects I'm working on will be done using the Opencode IDE, because it'
 
 - You have to register with TMDB to get your API_KEY so you can use the API in your machine's app: `https://www.themoviedb.org`
 
+<hr size="10" color="yellow" />
 <div align="center">
-▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
+▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
 </div>
+<hr size="10" color="yellow" />
 
 ## AnimeWhere Project 🥇
 
@@ -106,7 +110,7 @@ All the projects I'm working on will be done using the Opencode IDE, because it'
 ## Demonstration
 
 <div align="center">
-  <img src="https://drive.google.com/uc?export=view&id=" alt="" width="100%" border="0" />
+  <img src="https://drive.google.com/uc?export=view&id=1YV33AC-fXbFSk6lyj2hWYr7gIQWeOWfV" alt="" width="100%" border="0" />
 </div>
 <br />
 
@@ -129,10 +133,11 @@ API documentation: <br />
 - https://docs.anilist.co <br />
 - https://kitsu.docs.apiary.io <br />
 
+<hr size="10" color="yellow" />
 <div align="center">
-▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
+▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░▓▓▓▓▓▒▒▒░░░
 </div>
-<hr align="center" size="10" color="yellow" />
+<hr size="10" color="yellow" />
 
 ## License
 
